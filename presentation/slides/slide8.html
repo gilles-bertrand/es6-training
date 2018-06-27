@@ -1,0 +1,33 @@
+<h2>Manipulation des arrays avec MAP</h2>
+
+<h4>REmplace les boucles for et sont beaucoup plus rapide : </h4>
+
+<pre>
+        <code data-trim data-noescape>
+                const numbers = [1,2,3];
+                let doubledNumbers = [];
+                for(let i=0;i<numbers.length;i++){
+                        doubleNumbers.push(numbers[i]*2) 
+                }
+                console.log(doubleNumbers)
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>map use</li>
+                <li>attention à la mutation de la référence</li>
+                <li>Expliquer les iterator</li>
+                <li>
+                        <code data-trim data-noescape>
+                            let cars = [
+                            {model:'bmw', price:'CHEAP'},
+                            {model:'audo', price:'expensive'}]
+
+                            let prices = cars.map(function(car){
+                                    return car.price;
+                            });
+                        </code> 
+                </li>
+        </ul>
+</aside>

@@ -1,0 +1,43 @@
+<h2>Manipulation des arrays avec reduce </h2>
+
+<p>
+        Jusque là on manipule des array et cela nous renvoie un array, mais pas celui-ci
+</p>
+<pre>
+        <code data-trim data-noescape>
+               var numbers = [
+                10,20,30
+               ]
+               var sum =0
+               for (var i=0;i<numbers.length;i++){
+                       sum += numbers[i]
+               } )
+
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>
+                        <code data-trim data-noescape>
+                                numbers.reduce(function(sum, number){
+                                        return sum + number;
+                                },0)
+                         </code>
+                </li>
+                <li>
+                        <code data-trim data-noescape>
+                               var primaryColors = [
+                               {color :'red'},
+                               {color :'yellow'},
+                               {color :'blue'}
+                               ]
+                               //['red','yellow','blue']
+                               primaryColors.reduce(function(current, next){
+                                       current.push(next.color)
+                                       return current;
+                               },[])
+                         </code>
+                </li>
+        </ul>
+</aside>

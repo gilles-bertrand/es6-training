@@ -1,0 +1,36 @@
+<h2>Votre prochain entretien d'embauche avec reduce </h2>
+
+<p>
+        "()()()()()" comment valider ques les parenthèses sont bien de paires ?
+</p>
+<pre>
+        <code data-trim data-noescape>
+              function balancedParens(string){
+
+              }       
+              balancedParens('(((()');         
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>
+                        <code data-trim data-noescape>
+                                function balancedParens(string){
+                                        return !string.split('').reduce(function(prev,char){
+                                                if(prev <0){return prev}
+                                                if(char ==='('){ return ++prev }
+                                                if(char === ')'){ return --prev}
+                                                return prev;
+                                        },0)
+                                }       
+                                balancedParens('(((()');
+                         </code>
+                </li>
+                <li>
+                        <code data-trim data-noescape>
+             
+                         </code>
+                </li>
+        </ul>
+</aside>

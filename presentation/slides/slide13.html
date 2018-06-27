@@ -1,0 +1,67 @@
+<h2>Manipulation des arrays avec every et some</h2>
+
+<h4>2 methodes qui vont nous faire gagner du temps !!</h4>
+<p>
+        Jusque là on manipule des arrtay et cela nous renvoie un array, mais pas ceux ci
+</p>
+<pre>
+        <code data-trim data-noescape>
+                var computers= [
+                {name: 'Apple', ram :24},
+                {name: 'Compaq', ram: 4},
+                {name: 'Acer', ram:32}
+                ]
+                var allComputersCanRunProgram = true;
+                var onlySomeComputersCanRunProgram = false;
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>
+                        <code data-trim data-noescape>
+                                var computers= [
+                                {name: 'Apple', ram :24},
+                                {name: 'Compaq', ram: 4},
+                                {name: 'Acer', ram:32}
+                                ]
+                                var allComputersCanRunProgram = true;
+                                var onlySomeComputersCanRunProgram = false;
+                                for(var i =0; i< computers.length;i++){
+                                        car computer = computers[i];
+                                        if (computer.ram >16){
+                                                allComputersCanRunProgram = false
+                                        }
+                                }
+                                console.log(allComputersCanRunProgram);
+                                console.log(onlySomeComputersCanRunProgram);
+                         </code>
+                </li>
+                <li>
+                        <code data-trim data-noescape>
+                                var computers= [
+                                {name: 'Apple', ram :24},
+                                {name: 'Compaq', ram: 4},
+                                {name: 'Acer', ram:32}
+                                ]
+                                var allComputersCanRunProgram = true;
+                                var onlySomeComputersCanRunProgram = false;
+                                for(var i =0; i< computers.length;i++){
+                                        car computer = computers[i];
+                                        if (computer.ram >16){
+                                                allComputersCanRunProgram = false
+                                        }
+                                }
+                                console.log(allComputersCanRunProgram);
+                                console.log(onlySomeComputersCanRunProgram);
+
+                                computers.every(function(computer){
+                                        return computer.ram >16
+                                })
+                                computer.some(function(computer){
+                                        return computer.ram > 16
+                                })
+                         </code>
+                </li>
+        </ul>
+</aside>

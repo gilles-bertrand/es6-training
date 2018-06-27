@@ -1,0 +1,38 @@
+<h2>Manipulation des arrays avec find</h2>
+
+<h4>Vous avez surement déjà utilisr une boucle for dans les cas ou un find sera juste parfait</h4>
+
+<pre>
+        <code data-trim data-noescape>
+                var users = [
+                {name : 'Gilles'},
+                {name : 'Joelle'},
+                {name : 'Vincent'},
+                ]
+                var user;
+                for (car i=0;i<users.length;i++){
+                        if(users[i].name === 'Joelle'){
+                                user= = users[i]  
+                                break;  
+                        } 
+                }
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>
+                        <code data-trim data-noescape>
+                                var users = [
+                                {name : 'Gilles'},
+                                {name : 'Joelle'},
+                                {name : 'Vincent'},
+                                ]
+                var user = users.find(function(user){
+                        return user.name === 'joelle'
+                })
+                         </code>
+                </li>
+                <li>Attention, que find ne trouve que le premier éléments si il y en a 2 il ne le sait pas</li>
+        </ul>
+</aside>
