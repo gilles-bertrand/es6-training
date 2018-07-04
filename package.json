@@ -1,0 +1,37 @@
+{
+  "name": "es6-training",
+  "version": "1.0.0",
+  "description": "Formation es6 de TRIPTYK",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilles-bertrand/es6-training.git"
+  },
+  "keywords": [
+    "ES6",
+    "JAVASCRIPT",
+    "TRAINING"
+  ],
+  "author": "Gilles BERTRAND",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gilles-bertrand/es6-training/issues"
+  },
+  "homepage": "https://github.com/gilles-bertrand/es6-training#readme",
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-react": "^7.10.0",
+    "prettier": "^1.13.7"
+  }
+}
