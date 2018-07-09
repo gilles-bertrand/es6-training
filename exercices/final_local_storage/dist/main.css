@@ -6190,6 +6190,10 @@ table {
   height: 400px;
 }
 
+#addForm {
+  display: none;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

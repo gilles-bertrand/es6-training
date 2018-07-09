@@ -5,3 +5,7 @@
 #map {
   height: 400px;
 }
+
+#addForm {
+  display: none;
+}
