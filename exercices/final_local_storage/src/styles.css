@@ -1,0 +1,4 @@
+/*noinspectionCssInvalidateRule*/
+@tailwind preflight;
+
+@tailwind utilities;
