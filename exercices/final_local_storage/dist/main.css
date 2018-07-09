@@ -6186,6 +6186,10 @@ table {
   z-index: auto;
 }
 
+#map {
+  height: 400px;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

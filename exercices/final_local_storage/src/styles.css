@@ -2,3 +2,6 @@
 @tailwind preflight;
 
 @tailwind utilities;
+#map {
+  height: 400px;
+}
