@@ -1,5 +1,5 @@
 /* global window document $*/
-
+import * as localForage from 'localforage'
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -43,12 +43,35 @@ const addInteractivity = () => {
         lon: lon.value,
         image: result
       };
+      let monsters = []
+      localForage.getItem('monsters').then((result) => {
+        console.log(result)
+        if (result === null) {
+          localForage.setItem('monsters', monsters)
+        } else {
+          monsters.push(record)
+          localForage.setItem('monsters', monsters)
+        }
+      })
     });
   });
-};
+}
 
 const init = () => {
-  //init localstorage
+  // init localstorage
+  localForage.setDriver(localForage.INDEXEDDB).then(() => {
+    localForage.getItem('monsters').then((result) => {
+      if (result !== null) {
+       console.log(result)
+       result.forEach((item)=>{
+         console.log(item)
+       })
+       document.querySelector("#animals-list").innerHTML=result.reduce((prev, next) =>{
+         return `${prev}<li>${next.name} - <img src="${next.image}" width=150px"></li>`
+       },'')
+      }
+    })
+  })
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoidHJpcHR5ayIsImEiOiJjampjemtuZjEzcjQwM3dtbnN0OWY1ZjNiIn0.GikR8T10cdWqqaim5MJUXg";
