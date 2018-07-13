@@ -49,6 +49,7 @@ const addInteractivity = () => {
         if (result === null) {
           localForage.setItem('monsters', monsters)
         } else {
+          monsters=result
           monsters.push(record)
           localForage.setItem('monsters', monsters)
         }
@@ -57,30 +58,44 @@ const addInteractivity = () => {
   });
 }
 
-const init = () => {
-  // init localstorage
-  localForage.setDriver(localForage.INDEXEDDB).then(() => {
-    localForage.getItem('monsters').then((result) => {
-      if (result !== null) {
-       console.log(result)
-       result.forEach((item)=>{
-         console.log(item)
-       })
-       document.querySelector("#animals-list").innerHTML=result.reduce((prev, next) =>{
-         return `${prev}<li>${next.name} - <img src="${next.image}" width=150px"></li>`
-       },'')
-      }
-    })
-  })
-
+const renderMap = (monsters)=>{
+  console.log('ttt')
   mapboxgl.accessToken =
     "pk.eyJ1IjoidHJpcHR5ayIsImEiOiJjampjemtuZjEzcjQwM3dtbnN0OWY1ZjNiIn0.GikR8T10cdWqqaim5MJUXg";
   const carte = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/streets-v9",
-    center: [-74.5, 40],
+    center: [3.964070,50.461049],
     zoom: 10
   });
+  if(monsters.length){
+    monsters.forEach(item=>{
+      console.log(item)
+      let marker = new mapboxgl.Marker()
+      .setLngLat([item.lat,item.lon])
+      .addTo(carte);
+    })
+  }
+
+}
+
+const init = () => {
+  // init localstorage
+  let monsters =[]
+  localForage.setDriver(localForage.INDEXEDDB).then(() => {
+    localForage.getItem('monsters').then((result) => {
+      if (result !== null) {
+       document.querySelector("#animals-list").innerHTML=result.reduce((prev, next) =>{
+         return `${prev}<li>${next.name}</li>`
+       },'')
+       monsters = result;
+       renderMap(monsters)
+      }
+    })
+  })
+
+
+
   addInteractivity();
 };
 
