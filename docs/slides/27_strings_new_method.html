@@ -1,20 +1,12 @@
-<h2>Les templates string</h2>
+<h2>Les nouvelles methodes liées au string</h2>
 
-<h3>Comment gérer les chaines et les concaténations de variables </h3>
-<pre>
-        <code data-trim data-noescape>
-            const computers =[
-            {name : 'apple', ram: 16},
-            {name : 'IBM', ram: 6},
-            {name : 'tuxedo', ram: 32}
-            ]
-            const markup = `
-            <ul>
-            ${computers.map(computer => `<li>${computer.name}</li>`).join('')}
-            </ul>
-            `
-        </code>
-    </pre>
+<ul>
+    <li> 'hello'.startsWith('hell')</li>
+    <li> 'hello'.endsWith('ello')</li>
+    <li>'hello'.includes('ell')<li>
+    <li>'hello'.repeat(3)</li>
+</ul>
+
 <aside class="notes">
         <ul>
                 <li>Cette méthode est plus simple et plus efficace</li>

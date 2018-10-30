@@ -1,0 +1,27 @@
+<h2>La destruction en javascript</h2>
+
+<h3>La destructuration permet de récupérer des valeurs d'objets ou de array complexe simplement.
+
+</h3>
+<pre>
+        <code data-trim data-noescape>
+           let expense = {
+                 type: 'business',
+                 amount: '€ 50.00'
+               };
+               let type = expense.type;
+               let amount = expense.amount;
+             // Destructuring in es6
+               let { type, amount } = expense;
+               type = 'family';
+               console.log(type);
+            console.log(amount);
+            console.log(expense);
+            let [x, y] = ['Jane', 'Leo'];
+            x = 'Jane', y = 'Leo'
+        </code>
+    </pre>
+
+<aside class="notes">
+       
+</aside>

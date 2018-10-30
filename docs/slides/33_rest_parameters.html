@@ -1,0 +1,19 @@
+<h2>Default, rest parameters, spread operator</h2>
+
+<h3>Que permet donc le rest operator ?</h3>
+<p>
+    Il permet de récupérer sous forme de array le reste des paramètres d'une fonction par exemple.</p>
+<pre>
+        <code data-trim data-noescape>
+                function foo(x, y, ...z) {
+                    console.log(x, y, z);
+                  }
+                  foo(1, 2, 3, 4, 5);    // 1 2 [3,4,5]
+        </code>
+    </pre>
+
+<aside class="notes">
+        <ul>
+            <li>Ce qui remplace le slice()</li>
+        </ul>
+</aside>

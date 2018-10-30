@@ -1,0 +1,22 @@
+<h2>La destruction en javascript</h2>
+
+<h3>La destructuration permet de travailler sur les fonctions.
+
+</h3>
+<pre>
+        <code data-trim data-noescape>
+            function greet({name: greeting = 'she', age}) {
+                console.log(`${greeting} is ${age} years old.`)
+            }
+            greet({name: 'nico', age: 27});
+            // nico is 27 years old
+            greet({age: 24});
+            // she is 24 years old
+        </code>
+    </pre>
+
+<aside class="notes">
+        <ul>
+            <li>Il faut aller voir  l'exercice 15</li>
+        </ul>
+</aside>
