@@ -1,0 +1,30 @@
+<h2>Let const dans le monde réel</h2>
+
+<h3>IIFE</h3>
+<p>
+       Depuis on les remplace facilement grace au let et const.
+</p>
+<pre>
+        <code data-trim data-noescape>
+        
+        var name = 'gilles'
+        {
+                const name = 'gilles'
+        }
+
+        for(var i=0;i<10,i++){
+                console.log(i);
+                setTimeout(function(){
+                        console.log('the number i '+ i)
+                },1000)
+        }
+        </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>IIFE</li>
+                <li>for replace var by let</li>
+                <li>var permet d'accéder à la variable avant sa définititon pas let ni const</li>
+        </ul>
+</aside>

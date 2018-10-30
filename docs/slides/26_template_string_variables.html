@@ -1,0 +1,23 @@
+<h2>Les templates string</h2>
+
+<h3>Comment gérer les chaines et les concaténations de variables </h3>
+<pre>
+        <code data-trim data-noescape>
+            const computers =[
+            {name : 'apple', ram: 16},
+            {name : 'IBM', ram: 6},
+            {name : 'tuxedo', ram: 32}
+            ]
+            const markup = `
+            <ul>
+            ${computers.map(computer => `<li>${computer.name}</li>`).join('')}
+            </ul>
+            `
+        </code>
+    </pre>
+<aside class="notes">
+        <ul>
+                <li>Cette méthode est plus simple et plus efficace</li>
+                <li>cette ếthoide permet de égrer de l'html simplement</li>
+            </ul>
+</aside>

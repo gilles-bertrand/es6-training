@@ -1,0 +1,27 @@
+<h2>The arrow functions</h2>
+
+<h3>this scope correct</h3>
+<p>
+      Il y une diférerence importante de scope. 
+      Ce qui amène a pouvoir utiliser this correctement.
+</p>
+<pre>
+   
+    <code data-trim data-noescape>
+        function Voiture(){
+            var self = this;
+            self.kilometers = 100;
+            setTimeout(function(){
+                self.kilometers +=10;
+                console.log(self.kilometers)
+            },2000)
+        }
+        new Voiture();
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>Cette syntaxe est simplement une remise au gout du jour</li>
+        </ul>
+</aside>

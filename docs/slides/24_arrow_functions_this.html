@@ -1,0 +1,25 @@
+<h2>The arrow functions</h2>
+
+<h3>this scope correct</h3>
+<p>
+      l'arrow function permet de garder le scope actuel du this;
+</p>
+<pre>
+   
+    <code data-trim data-noescape>
+        function Voiture(){
+            this.kilometres = 100;
+            setTimeout(()=>{
+                this.kilometres += 10;
+                console.log(this.kilometres);
+            },2000)
+        }
+        new Voiture();
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>voir exercice 10</li>
+        </ul>
+</aside>

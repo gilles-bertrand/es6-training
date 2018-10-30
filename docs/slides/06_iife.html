@@ -1,19 +1,17 @@
 <h2>Let const dans le monde réel</h2>
 
 <h3>IIFE</h3>
+<p>
+        Elles permettaient de simuler des scopes et se retrouvent dans de nombreux frameworks comme closure.
+</p>
 <pre>
         <code data-trim data-noescape>
-        var name = 'gilles'
-        {
-                const name = 'gilles'
-        }
-
-        for(var i=0;i<10,i++){
-                console.log(i);
-                setTimeout(function(){
-                        console.log('the number i '+ i)
-                },1000)
-        }
+                (function(param1,param2){
+                        //we are now in a scope
+                        var a = param1;
+                        var b = param2;
+                   
+                })("gilles",44)
         </code>
 </pre>
 
