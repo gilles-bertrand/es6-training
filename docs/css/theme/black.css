@@ -11,8 +11,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #222;
-  background-color: #222; }
+  background: #91c2ff url("/assets/bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-color: #91c2ff; }
 
 .reveal {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -161,6 +162,9 @@ body {
   overflow: auto;
   max-height: 400px;
   word-wrap: normal; }
+
+pre, code {
+  white-space: normal; }
 
 .reveal table {
   margin: auto;

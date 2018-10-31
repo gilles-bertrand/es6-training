@@ -1,12 +1,12 @@
 <h2>Let Vs const</h2>
 
-Les déclaration let définissent des variables dont la portée est limitée au bloc courant ({}})
+Les déclaration let définissent des variables dont la portée est limitée au bloc courant ({})
 <pre>
         <code data-trim data-noescape>
         const key = 'abcd12134';
         let points = '50';
         let winner = false;
-
+        <br>
         points=60;
         key = 'ababababa'
         const person = {
@@ -16,5 +16,34 @@ Les déclaration let définissent des variables dont la portée est limitée au 
         </code>
 </pre>
 <aside class="notes">
+              <p>
+                        for(let i = 0; i = 10; i++){
+                                
+                        }
+                        cosole.log(i)
+                        //retourne undefined
+               
+        </p>
+<p>
         Ne pas oublier de parler de Object.freeze (key) et de changer l'objet mais l'intérieur
+</p>     
+        <pre style="font-size:10px;">
+                <code data-trim data-noescape>
+                const object1 = {
+                property1: 42
+                };
+        
+                const object2 = Object.freeze(object1);
+        
+                object2.property1 = 33;
+                // Throws an error in strict mode
+        
+                console.log(object2.property1);
+                // expected output: 42
+        </code>
+                
+        </pre>
+                Les tableaux peuvent également être gelés.
+                Object.freeze(myArray)
+        </aside>
 </aside>

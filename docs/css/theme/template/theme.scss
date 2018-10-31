@@ -194,8 +194,11 @@ body {
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: normal;
+	
 }
-
+pre, code{
+	white-space:normal;
+}
 .reveal table {
 	margin: auto;
 	border-collapse: collapse;

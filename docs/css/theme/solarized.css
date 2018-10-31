@@ -15,23 +15,24 @@ html * {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #fdf6e3;
-  background-color: #fdf6e3; }
+  background: #403e9c url("/assets/bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-color: #403e9c; }
 
 .reveal {
   font-family: "Lato", sans-serif;
   font-size: 40px;
   font-weight: normal;
-  color: #657b83; }
+  color: red; }
 
 ::selection {
   color: #fff;
-  background: #d33682;
+  background: #91c2ff;
   text-shadow: none; }
 
 ::-moz-selection {
   color: #fff;
-  background: #d33682;
+  background: #91c2ff;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -49,7 +50,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #586e75;
+  color: white;
   font-family: "League Gothic", Impact, sans-serif;
   font-weight: normal;
   line-height: 1.2;
@@ -166,6 +167,9 @@ body {
   max-height: 400px;
   word-wrap: normal; }
 
+pre, code {
+  white-space: normal; }
+
 .reveal table {
   margin: auto;
   border-collapse: collapse;
@@ -232,7 +236,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #657b83;
+  border: 4px solid red;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
