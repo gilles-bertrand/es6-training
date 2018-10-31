@@ -1,64 +1,96 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown="slides/slide1.html"></section>
-				<section data-markdown="slides/slide2.html"></section>
-				<section data-markdown="slides/slide3.html"></section>
-				<section data-markdown="slides/slide4.html"></section>
-				<section data-markdown="slides/slide5.html"></section>
-				<section data-markdown="slides/slide6.html"></section>
-				<section data-markdown="slides/slide7.html"></section>
-				<section data-markdown="slides/slide8.html"></section>
-				<section data-markdown="slides/slide9.html"></section>
-				<section data-markdown="slides/slide10.html"></section>
-				<section data-markdown="slides/slide11.html"></section>
-				<section data-markdown="slides/slide12.html"></section>
-				<section data-markdown="slides/slide13.html"></section>
-				<section data-markdown="slides/slide14.html"></section>
-				<section data-markdown="slides/slide15.html"></section>
-				<section data-markdown="slides/slide16.html"></section>
-				
-			</div>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown="slides/01_introduction.html"></section>
+			<section data-markdown="slides/02_introduction.html"></section>
+			<section data-markdown="slides/03_variables.html"></section>
+			<section data-markdown="slides/04_variables_scopes.html"></section>
+			<section data-markdown="slides/05_let_const.html"></section>
+			<section data-markdown="slides/06_iife.html"></section>
+			<section data-markdown="slides/07_iife_let.html"></section>
+			<section data-markdown="slides/08_object_freeze.html"></section>
+			<section data-markdown="slides/09_let_best_practices.html"></section>
+			<section data-markdown="slides/10_map_array.html"></section>
+			<section data-markdown="slides/11_iterators.html"></section>
+			<section data-markdown="slides/12_map_exercice.html"></section>
+			<section data-markdown="slides/13_filter_array.html"></section>
+			<section data-markdown="slides/14_filter_exercice.html"></section>
+			<section data-markdown="slides/15_filter_exercice_2.html"></section>
+			<section data-markdown="slides/16_filter_exercice_3.html"></section>
+			<section data-markdown="slides/17_find_array.html"></section>
+			<section data-markdown="slides/18_some_every.html"></section>
+			<section data-markdown="slides/19_reduce_arrays.html"></section>
+			<section data-markdown="slides/20_reduce_exercice.html"></section>
+			<section data-markdown="slides/21_Exercice_array_global.html"></section>
+			<section data-markdown="slides/22_arro_functions.html"></section>
+			<section data-markdown="slides/23_arrow_function_scope.html"></section>
+			<section data-markdown="slides/24_arrow_function_thos.html"></section>
+			<section data-markdown="slides/25_template_strings_multi.html"></section>
+			<section data-markdown="slides/26_template_string_variables.html"></section>
+			<section data-markdown="slides/27_strings_new_method.html"></section>
+			<section data-markdown="slides/28_destructuring_1.html"></section>
+			<section data-markdown="slides/29_destructuring_2.html"></section>
+			<section data-markdown="slides/30_default_rest_spread.html"></section>
+			<section data-markdown="slides/31_default_rest_spread_2.html"></section>
+			<section data-markdown="slides/32_spread_operator.html"></section>
+			<section data-markdown="slides/33_rest_parameters.html"></section>
+
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+</body>
+
 </html>
