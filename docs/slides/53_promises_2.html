@@ -1,0 +1,25 @@
+<h2>Les promises</h2>
+
+<h3>Comment faire pour attendre la fin de multiple promesses</h3>
+<h4>Promise.all([Promises]) permùet d'attendre la fin de toutes promesses et ensuite de faire le then</h4>
+<pre>
+    <code data-trim data-noescape>
+      var promise1 = Promise.resolve(3);
+      var promise2 = 42;
+      var promise3 = new Promise(function(resolve, reject) {
+        setTimeout(resolve, 100, 'foo');
+      });
+      
+      Promise.all([promise1, promise2, promise3]).then(function(values) {
+        console.log(values);
+      });
+      // expected output: Array [3, 42, "foo"]  
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Voir exercice 23 et 22 avec utilisation de fetch en lieu et place d'un vieux $.get</li>
+          <li>L'API Fetch fournit une interface pour la récupération de ressources (e.g., à travers le réseau.) Elle paraîtra familière à tout utilisateur de XMLHttpRequest, mais cette nouvelle API propose néanmoins un ensemble de fonctionnalités plus souples et plus puissantes.</li>
+        </ul>
+</aside>

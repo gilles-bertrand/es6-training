@@ -1,0 +1,32 @@
+<h2>Les promises</h2>
+
+<h3>Qu'est donc?/h3>
+<h4>L'objet Promise (pour « promesse ») est utilisé pour réaliser des traitements de façon asynchrone. Une promesse représente une valeur qui peut être disponible maintenant, dans le futur voire jamais.</h4>
+<pre>
+    <code data-trim data-noescape>
+      var promise1 = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve('foo');
+        }, 300);
+      });
+      
+      promise1.then(function(value) {
+        console.log(value);
+        // expected output: "foo"
+      });
+      
+      console.log(promise1);
+      // expected output: [object Promise]
+            
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Voir exercice 23</li>
+          <li>Les promesses permettent de posposer l'execution du code et de savoir quand celui-ci sera executé</li>
+          <li>le resolve s'execute quand la promesse est finie, c'est le then qui est alors appelé</li>
+          <li>le reject s'execute quand la promesse est en erreur, c'est le catch qui est alors appelé</li>
+         <li>Ce qu'il faut bien expliquer c'est que les promesses remplace les callback et qu'elles permettent plus de choses</li>
+        </ul>
+</aside>

@@ -1,0 +1,27 @@
+<h2>Les web components</h2>
+
+<h3>Qu'est donc?/h3>
+<h4>C'est la possibilité de créer votre propre balise html et d'y encapsuler les fonctionnalités.</h4>
+<pre>
+    <code data-trim data-noescape>
+      class WordCount extends HTMLParagraphElement {
+        constructor() {
+          // Toujours appeler "super" d'abord dans le constructeur
+          super();
+      
+          // Ecrire la fonctionnalité de l'élément ici
+      
+          ...
+        }
+      }
+      customElements.define('wordcount', WordCount);
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Voir exercice 21</li>
+          <li>Un des éléments clé est CustomElementRegistry ; cet objet vous permet d'enregistrer un élément personnalisé sur une page, de renvoyer des informations sur les éléments personnalisés enregistrés, </li>
+         <li>Ce qu'il faut bien expliquer c'est que cela peut contenir du js du css et de l'html</li>
+        </ul>
+</aside>

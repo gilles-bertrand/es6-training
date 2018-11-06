@@ -1,0 +1,25 @@
+<h2>Await + Async</h2>
+
+<h3>La gestion de l'asynchrone rendu plus facile !!!!</h3>
+<h4>Attention que les promesses sont les fondations de ASYNC + AWAIT</h4>
+<pre>
+    <code data-trim data-noescape>
+      //async await 
+      async function animate(){
+        await moveTo(50,50);
+        await moveTo(20,50);
+        await moveTo(10,200);
+        await moveTo(2,10);
+      }
+     
+
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Voir exercice 24</li>
+          <li>la commande wait fait attendre lka promesse et ensuite passe à la suite</li>
+          <li>mais cette commande doit etre dans un function qui possède l'attribut async/li>
+        </ul>
+</aside>
