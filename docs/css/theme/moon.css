@@ -15,7 +15,8 @@ html * {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #002b36;
+  background: #002b36 url("/assets/bg.jpg") center top no-repeat;
+  background-size: cover;
   background-color: #002b36; }
 
 .reveal {
@@ -165,6 +166,9 @@ body {
   overflow: auto;
   max-height: 400px;
   word-wrap: normal; }
+
+pre, code {
+  white-space: normal; }
 
 .reveal table {
   margin: auto;

@@ -1,0 +1,20 @@
+<h2>Default, rest parameters, spread operator</h2>
+
+<h3>Les paramètres par défaut c'était galère avant en ES5 !</h3>
+<pre>
+        <code data-trim data-noescape>
+                function makeRequest(url, timeout, callback) {
+                    timeout = (typeof timeout !== "undefined") ?
+                               timeout : 2000;
+                    callback = (typeof callback !== "undefined") ?
+                                callback : function() {};
+                    ...
+                  }
+        </code>
+    </pre>
+
+<aside class="notes">
+        <ul>
+            <li>Il fallait vérifier chaque parametre pour eviter une erreur et ensuite appliquer une valeur</li>
+        </ul>
+</aside>

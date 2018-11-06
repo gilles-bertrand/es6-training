@@ -11,7 +11,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #F0F1EB;
+  background: #F0F1EB url("/assets/bg.jpg") center top no-repeat;
+  background-size: cover;
   background-color: #F0F1EB; }
 
 .reveal {
@@ -161,6 +162,9 @@ body {
   overflow: auto;
   max-height: 400px;
   word-wrap: normal; }
+
+pre, code {
+  white-space: normal; }
 
 .reveal table {
   margin: auto;
