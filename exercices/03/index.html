@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 03</title>
+</head>
+
+<body>
+    <h2>Exercice 03</h2>
+    <script>
+        function filterArrayByObjectProperties(array, property, value) {
+            return array.filter(function (item) {
+                return item[property] === value
+            })
+        }
+        let products = [
+            { name: 'banana', type: 'fruit' },
+            { name: 'cucumber', type: 'vegetable' },
+            { name: 'orange', type: 'fruit' },
+            { name: 'celery', type: 'vegetable' },
+            { name: 'horseradish', type: 'vegetable' },
+        ]
+        let filteredFruits = filterArrayByObjectProperties(products, 'type', 'fruit')
+        console.log(filteredFruits)
+        let filteredVegetable = filterArrayByObjectProperties(products, 'type', 'vegetable')
+        console.log(filteredVegetable)
+
+    </script>
+</body>
+
+</html>

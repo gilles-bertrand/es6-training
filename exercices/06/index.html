@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 06 REDUCE</title>
+</head>
+<body>
+    <h1>Exercice 06 REDUCE</h1>
+    <script>
+        let numbers = [10,20,30,40,50];
+        let sum = numbers.reduce(function(previous,current){
+            return previous + current;
+        },0)
+        console.log(sum)
+
+        let colors = [
+            { color :'red'},
+            { color :'yellow'},
+            { color :'blue'},
+        ]
+
+        let colorsArr = colors.reduce(function(prev,color){
+            console.log("prev :" +JSON.stringify(prev))
+            console.log("next :" +JSON.stringify(color))
+            prev.push(color.color);
+            return prev;
+        },[])
+        console.log(colorsArr)
+    </script>
+</body>
+</html>

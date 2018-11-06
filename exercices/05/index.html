@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercie 05 SOME et EVERY</title>
+</head>
+<body>
+    <h1>Exercice 05</h1>
+    <script>
+        let computers =[
+            {name: 'apple', ram:24},
+            {name: 'hp', ram:16},
+            {name: 'ibm', ram:4}
+        ];
+        let allComputersCanRunProgram=true;
+        let onlySomeComputersCanRunProgram=false;
+        for(let i =0, l = computers.length;i<l;i++){
+            var computer = computers[i];
+            if(computer.ram <16){
+                allComputersCanRunProgram = false
+            }
+        }
+        // console.log(allComputersCanRunProgram)
+        // console.log(onlySomeComputersCanRunProgram)
+        allComputersCanRunProgram = computers.every(function(item){
+           
+            return item.ram>=16
+        })
+        onlySomeComputersCanRunProgram = computers.some(function(item){
+            return item.ram < 16
+        })
+        console.log(allComputersCanRunProgram)
+        console.log(onlySomeComputersCanRunProgram)
+
+    </script>
+</body>
+</html>

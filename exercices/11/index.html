@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow Functions</title>
+</head>
+
+<body>
+
+  <ul>
+    <li data-time="5:17">Ember Video</li>
+    <li data-time="8:22">Ember Video</li>
+    <li data-time="3:34">React Video</li>
+    <li data-time="5:23">Ember Video</li>
+    <li data-time="7:12">Ember Video</li>
+    <li data-time="7:24">React Video</li>
+    <li data-time="6:46">Ember Video</li>
+    <li data-time="4:45">Ember Video</li>
+    <li data-time="4:40">Ember Video</li>
+    <li data-time="7:58">React Video</li>
+    <li data-time="11:51">Ember Video</li>
+    <li data-time="9:13">Ember Video</li>
+    <li data-time="5:50">Ember Video</li>
+    <li data-time="5:52">React Video</li>
+    <li data-time="5:49">Ember Video</li>
+    <li data-time="8:57">Ember Video</li>
+    <li data-time="11:29">Ember Video</li>
+    <li data-time="3:07">Ember Video</li>
+    <li data-time="5:59">React Video</li>
+    <li data-time="3:31">Ember Video</li>
+  </ul>
+
+  <script>
+    // Faites un array de tous les elements de la liste
+    // Filtrer cet array sur base du mot Ember
+    // Créer un array ne contenant que le temps en chaine de caractères
+    // Créer un array de secondes
+    // reduce pour obtenir le total
+    const items = Array.from(document.querySelectorAll('[data-time]'))
+    const filtered = items.filter(item => item.textContent.includes('Ember'))
+      .map(item => item.dataset.time)
+      .map(timecode => {
+        const parts = timecode.split(':').map(part => parseFloat(part))
+        return parts[0] * 60 + parts[1]
+      })
+      .reduce((secondsTotal, seconds) => secondsTotal + seconds)
+    console.log(filtered)
+
+    // const filtered = items.filter(function (item) {
+    //   return item.textContent.includes('Ember')
+    // })
+    // console.log(filtered)
+    // const timecodes = filtered.map(function (item) { return item.dataset.time });
+    // console.log(timecodes)
+    // const secondsArray = timecodes.map(function (timecode) {
+    //   const parts = timecode.split(':').map(function (part) {
+    //     return parseFloat(part)
+    //   });
+    //   return parts[0] * 60 + parts[1]
+    // })
+    // console.log(secondsArray)
+    // const totalSeconds = secondsArray.reduce(function (secondsTotal, seconds) {
+    //   return secondsTotal + seconds
+    // });
+    // console.log(totalSeconds)
+  </script>
+</body>
+
+</html>

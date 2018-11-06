@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 01</title>
+</head>
+
+<body>
+    <h1>Exercice 01</h1>
+    <script>
+        /*         let machin = 0;
+                function test(){
+                   let machin =2;
+                }
+                test();
+                console.log('machin : '+machin);
+                let truc = 0;
+                if(truc<1){
+                    let truc =1;
+                }
+                console.log('truc: '+ truc); */
+
+        /*    {
+               let nom = "gilles";
+           }
+           console.log(nom) */
+        //function iife
+        (function ($, $$) {
+
+            window.tpk = {}
+            window.tpk.event = {}
+        })()
+
+        //
+        /*     var a=3;
+               var b=a;
+               b=1
+               console.log(a)
+               var obj = {
+                   name:'gilles',
+                   age:44
+               }
+               var obj3 = deepClone(obj);
+               obj3.name='joelle';
+               console.log(obj);
+       
+               var obj2 = obj;
+               obj2.name="vincent";
+               console.log(obj);
+       
+               function deepClone(obj){
+                   return JSON.parse(JSON.stringify(obj));
+               } */
+        /*  const name = "gilles";
+         name ="florian" */
+
+        /*         const names = ['gilles','joelle'];
+                Object.freeze(names)
+                names.push('florian')
+                console.log(names) */
+        for (let i = 0; i < 10; i++) {
+            console.log(i);
+            setTimeout(function () {
+                console.log('the number i : ' + i);
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 07 REDUCE MAX</title>
+</head>
+<body>
+    <h1>Exercice 07 REDUCE MAX</h1>
+    <script>
+        function balancedParens(string){
+       return !string.split('').reduce(function(prev,next){
+        console.log(prev +'::::'+!prev)
+           if(prev <0){return prev}
+           if(next === '('){return ++prev}
+           if(next === ')'){return --prev} 
+         
+        },0)
+        }
+       console.log( balancedParens('())(()'))
+    </script>
+</body>
+</html>

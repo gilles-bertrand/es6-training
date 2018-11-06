@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 02</title>
+</head>
+
+<body>
+    <h1>Exercice 02</h1>
+    <script>
+        const numbers = [1, 2, 3, 4, 5];
+        /*  function double(arr) {
+             let tmpArr = []
+             for (let i = 0, l = numbers.length; i < l; i++) {
+                 tmpArr.push(numbers[i] * 2);
+             }
+             return tmpArr;
+         } */
+        // console.log(double(numbers))
+        const doubleNumbers = numbers.map(function (number, index) {
+            // console.log(index)
+            if (index === 3) return number * 3;
+            return number * 2
+        })
+        /*  const doubleNumbers = numbers.map((item)=>item *2) */
+        // console.log(doubleNumbers)
+        let images = [
+            { height: '34px', width: '67px', color: '#ff0032' },
+            { height: '54px', width: '167px', color: '#ee0032' },
+            { height: '74px', width: '267px', color: '#000032' },
+            { height: '4px', width: '367px', color: '#cc0032' },
+            { height: '94px', width: '667px', color: '#dd0032' }
+        ];
+        let heights = images.map(function (image) {
+            return image.height;
+        })
+        // console.log(heights);
+        function pluck(array, properties, returnType) {
+
+            if (!Array.isArray(properties)) {
+                return array.map(function (item) {
+                    return item[properties] //renvoie la valeur de la propriété de l'objet passé
+                })
+            } else {
+                if (returnType === 'object') {
+                    return array.map(function (item) {
+                        console.log(item)
+                        let o = {}
+                        for (let i = 0, l = properties.length; i < l; i++) {
+                            o[properties[i]] = item[properties[i]]
+                        }
+                        return o;
+                    })
+                } else {
+                    return array.map(function (item) {
+                        return properties.map(function (property) {
+                            return item[property];
+                        })
+                    })
+                }
+            }
+
+        }
+        // console.log(pluck(images, 'width'))
+        console.log(pluck(images, ['width', 'color'], 'object'))
+        console.log(pluck(images, ['width', 'color'], 'array'))
+        // console.log(pluck(images, 'color'))
+        let trips = [
+            { destination: "Mons", distance: 40 },
+            { destination: "Bruxelles", distance: 80 },
+            { destination: "Rasteau", distance: 900 },
+            { destination: "Barcelone", distance: 1400 },
+        ]
+        let destinations = pluck(trips, 'destination')
+        console.log(destinations)
+    </script>
+</body>
+
+</html>

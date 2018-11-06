@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template strings</title>
+</head>
+
+<body>
+    <h1>Template strings</h1>
+    <div class="container">
+
+    </div>
+    <script>
+        // let texte =  "ceci est un test de \
+        // multiligne\
+        // et plus encore";
+        //     let texte =  "ceci est un test de ";
+        //     texte+=" multiligne";
+        //    texte += " et plus encore";
+        //         let texte = `ceci est un test de 
+        // multiligne
+        // et plus encore`;
+        // let content = "<b> ceci est vraiment plus dur </b>"
+        // let name = "BERTRAND";
+        // let person = {
+        //     name : "gilles",
+        //     age:44,
+        //     job:"glandeur"
+        // }
+        // console.log(person)
+        // console.log({person})
+        // console.log(`${JSON.stringify(person)}`)
+        // console.log( `${person.name} ${name} a ${person.age} ans et a le boulot de ${person.job}`)
+
+        // const computers =[
+        //     {name : 'apple', ram: 16},
+        //     {name : 'IBM', ram: 6},
+        //     {name : 'tuxedo', ram: 32}
+        // ]
+        // const markup = `
+        // <ul>
+        // ${computers.map(computer => `<li>${computer.name}</li>`).join('')}
+        // </ul>
+        // `
+        // document.querySelector('body').innerHTML=markup
+
+        let createLink = (buttonData) => {
+            return `<li><a href="${buttonData.link}">${buttonData.texte}</a></li>`
+        }
+
+        let buttons = [
+            { texte: 'triptyk', link: "http://www.triptyk.eu" },
+            { texte: 'technocite', link: "http://www.technocite.be" },
+            { texte: 'ember', link: "https://www.emberjs.com/" },
+            { texte: 'glimmer', link: "https://glimmerjs.com/" },
+        ]
+
+        let markup = `
+        <h1>test of generating</h1>
+        <ul>
+            ${buttons.map(button => createLink(button)).join('')}
+        </ul>
+        `;
+        document.querySelector('body').innerHTML = markup
+    </script>
+</body>
+
+</html>

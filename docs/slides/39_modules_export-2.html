@@ -1,0 +1,26 @@
+<h2>Les modules</h2>
+
+<h3>Definir avant et exporter ensuite</h3>
+
+<pre>
+   <code data-trim data-noescape>
+      function multiply(num1, num2) {
+        return num1 * num2;
+      }
+      export { multiply };
+
+      class ZipCodeValidator extends StringValidator {
+        isAcceptable(value) {
+            return value.length === 5 && numberRegexp.test(value);
+        }
+    }
+    export { ZipCodeValidator as mainValidator };
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>Dans ce cas on exporte bien avec les {} pour définir ce que l'on exporte ou pas</li>
+                <li>Et le as permet de dire que le module qui importe devra utiliser as.</li>
+        </ul>
+</aside>

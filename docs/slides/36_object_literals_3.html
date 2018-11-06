@@ -1,0 +1,30 @@
+<h2>Les object literal nouveaux</h2>
+
+<h3>Lorsqu'une propriété a le même nom qu'une variable</h3>
+
+<pre>
+        <code data-trim data-noescape>
+                //es5
+                function createPerson(name, age) {
+                        return {
+                          name: name,
+                          age: age
+                        };
+                }
+                //es6
+                function createPerson(name, age) {
+                        return {
+                          name,
+                          age
+                        };
+                }
+        </code>
+    </pre>
+
+<aside class="notes">
+        <ul>
+            <li>Voir exercice 16</li>
+            <li>Voir exercice 17, pour un beau recap</li>
+            <li>Attention que ce sont presque des classes ces objets mais qui ne peuvent être instancé donc des singletons</li>
+        </ul>
+</aside>

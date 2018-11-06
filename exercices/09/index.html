@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrow function</title>
+</head>
+
+<body>
+    <h1>Arrow Functions</h1>
+
+    <script>
+        const names = ["Joelle", "Bliss", "Anthony"]
+        // const fullNames = names.map(function(name){
+        //     return name+" Bertrand"
+        // })
+        const fullNames = names.map(name => name + " Bertrand")
+        console.log(fullNames)
+
+        // function sayHello(name){
+        //     console.log("hello "+name);
+        // }
+
+        const sayHello = (name) => {
+            console.log('hello ' + name)
+        }
+        sayHello('gilles')
+
+        const ages = [25, 35, 45, 65, 75, 85, 95];
+        // const retired = ages.filter(function(age){
+        //     return age >=60
+        // })
+        const retired = ages.filter(age => age >= 60);
+        console.log(retired)
+
+
+        const race = "100m haies";
+        const winners = ["Henri", "Alfred", "Josée"]
+        // const win = winners.map((winner,i) =>({name:winner,race:race,place:i+1}))
+        const win = winners.map((winner, i) => ({ name: winner, race, place: i + 1 }))
+
+        // const win = winners.map(function(winner,i){
+        //     return {name:winner,race,place:i+1}
+        // })
+        //resultat attendu
+        // [
+        //     {name:"Henri", race:"100m haies", place:1},
+        //     {name:"Alfred", race:"100m haies", place:2},
+        //     {name:"Josée", race:"100m haies", place:3}
+        // ]
+        console.table(win)
+    </script>
+</body>
+
+</html>

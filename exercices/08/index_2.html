@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice de find </title>
+   
+</head>
+<body>
+    <h1>Test  dans le monde réel</h1>
+    <section >
+        <ul id="posts_list"></ul>
+    </section>
+    <section id="post_details">
+    </section>
+    <script>
+            const posts = [
+                { id:1, title :'Titre 1', content:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+                { id:2, title :'Titre 2', content:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+                { id:3, title :'Titre 3', content:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+                { id:4, title :'Titre 4', content:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+                { id:5, title :'Titre 5', content:' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+            ];
+            function createDetails(id_post){
+                let details_ui = document.querySelector("#post_details");
+                details_ui.innerHTML ='';
+                post = posts.find(function(post){
+                    return post.id === id_post
+                })
+                let content = document.createElement('p');
+                content.innerHTML='<strong>'+post.title +'</strong><br>'+post.content;
+                details_ui.appendChild(content);
+            }
+            function init(){
+              posts.map(function(post){
+                    let li = document.createElement('li')
+                    let a = document.createElement('a')
+                    let content = document.createTextNode(post.title)
+                    a.appendChild(content);
+                    a.href=post.id;
+                    li.appendChild(a);
+                    a.addEventListener('click',function(event){
+                        event.preventDefault();
+                        history.pushState({id:post.id}, "index",'/'+post.id);
+                        createDetails(post.id)
+                    })
+                    let list = document.querySelector('#posts_list')
+                    list.appendChild(li)
+                })
+                history.pushState(null, "index",'/');
+            }
+            init();
+          
+        </script>
+</body> 
+</html>
