@@ -1,0 +1,28 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe et les accessors</h3>
+<h4>NOus avons la possibilité de définir comment accéder à nos propriétés</h4>
+<pre>
+    <code data-trim data-noescape>
+      class Warrior {
+        constructor(name) {
+          this._name = name;
+          this._health = 100;
+        }
+        get health() {
+          return this._health;
+        }
+      }
+      let donatello = new Warrior("Donatello");
+      console.log(donatello.health);   // 100
+      donatello.health = 80;   // TypeError: Cannot set property health...
+      
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Quand on ne défini pas le setter, la propriété devient read-only</li>
+         
+        </ul>
+</aside>

@@ -1,0 +1,33 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe et l'héritage</h3>
+
+<pre>
+    <code data-trim data-noescape>
+      class Warrior {
+        constructor(name) {
+          this.name = name;
+          this.health = 100;
+        }
+        heal(amount) {
+          this.health = Math.min(this.health + amount, 100);
+        }
+      }
+      class Ninja extends Warrior {
+        constructor(name) {
+          super(name);
+        }
+        heal(amount) {
+          super.heal(amount * 1.2);
+        }
+      }
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+         <li>On tuilise le mot clé extends</li>
+         <li>Si une classe nécessite d'instancier son parent avec des valeur, le constructeur doit utiliser super() pour le faire</li>
+        <li>Attention que vous devez utiliser super avant de pouvoir utiliser this dans le constructeur</li>
+        </ul>
+</aside>

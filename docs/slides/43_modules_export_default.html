@@ -1,0 +1,21 @@
+<h2>Les modules</h2>
+
+<h3>On peut définir une valeur par défaut d'exportation</h3>
+
+<pre>
+    <code data-trim data-noescape>
+            export default function(num1, num2) {
+                return num1 + num2;
+            }
+            //Importation 
+            import sum from "./example.js";
+            import sum, { add } from "./example.js";
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+            <li>ON a pas besoin des {} lorsu'il y a un default</li>
+            <li>mais on peut toujours aller chercher cqui n'est pas défaut</li>
+        </ul>
+</aside>

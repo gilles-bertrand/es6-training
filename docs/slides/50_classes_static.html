@@ -1,0 +1,27 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe et les méthodes statiques</h3>
+<h4>NOus avons la possibilité de définir comment accéder à nos propriétés</h4>
+<pre>
+    <code data-trim data-noescape>
+      class PersonClass {
+        constructor(name) {
+          this.name = name;
+        }
+        sayName() {
+          console.log(this.name);
+        }
+        static create(name) {
+          return new PersonClass(name);
+        }
+      }
+      let person = PersonClass.create("Nicholas");
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+          <li>Les propriétés statiques sont des éléments de classes et pas d'instance</li>
+         
+        </ul>
+</aside>

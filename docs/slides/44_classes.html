@@ -1,0 +1,35 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe en ES5</h3>
+
+<pre>
+    <code data-trim data-noescape>
+        function Car () {
+            this.fuel = 0;
+            this.distance = 0;
+          }
+          Car.prototype.move = function () {
+            if (this.fuel < 1) {
+              throw new RangeError('Fuel tank is depleted')
+            }
+            this.fuel--
+            this.distance += 2
+          }
+          Car.prototype.addFuel = function () {
+            if (this.fuel >= 60) {
+              throw new RangeError('Fuel tank is full')
+            }
+            this.fuel++
+          }
+          var car = new Car();
+          car.addFuel();
+          car.move();
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+            <li>Voir exercice 19</ul>/li>
+            <li>Les classes en es5 sont des fonctions et on utilise le prototype pour l'héritage</li>
+        </ul>
+</aside>

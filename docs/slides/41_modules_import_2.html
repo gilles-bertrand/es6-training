@@ -1,0 +1,18 @@
+<h2>Les modules</h2>
+
+<h3>Comment importer les modules !!!</h3>
+<h4>Pour importer toutes les valeurs</h4>
+<pre>
+    <code data-trim data-noescape>
+        import * as example from "./example.js";
+        console.log(example.sum(1, example.magicNumber));
+        console.log(example.multiply(1, 2));
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+                <li>Dans ce cas on importe bien avec les {} pour définir ce que l'on importe ou pas</li>
+                <li>Attention qu'importe le fois que vous importez le module, il ne sera instantié qu'une suele fois</li>
+        </ul>
+</aside>

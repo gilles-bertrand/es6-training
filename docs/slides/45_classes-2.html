@@ -1,0 +1,36 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe en ES6</h3>
+<p>
+  Les classes es6 ne sont que des réécritures basée sur l'ancienne façon. Ce qui permet une meilleur lisibilité
+</p>
+<pre>
+    <code data-trim data-noescape>
+      class Car {
+        constructor () {
+          this.fuel = 0
+          this.distance = 0
+        }
+        move () {
+          if (this.fuel < 1) {
+            throw new RangeError('Fuel tank is depleted')
+          }
+          this.fuel--
+          this.distance += 2
+        }
+        addFuel () {
+          if (this.fuel >= 60) {
+            throw new RangeError('Fuel tank is full')
+          }
+          this.fuel++
+        }
+      }
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+            <li>Class declarations commencent avec le mot clé class suivi du nom de la classe.</li>
+            <li>On ne peut pas appeler le constructeur de la classe sans utiliser le mot new</li>
+        </ul>
+</aside>

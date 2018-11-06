@@ -1,0 +1,24 @@
+<h2>Les Classes</h2>
+
+<h3>Les classe sous forme d'expression</h3>
+
+<pre>
+    <code data-trim data-noescape>
+      let PersonClass = class {
+        constructor(name) {
+          this.name = name;
+        }
+        sayName() {
+          console.log(this.name);
+        }
+      };
+      let person = new PersonClass("Nicholas");
+      person.sayName();   // outputs "Nicholas"
+    </code>
+</pre>
+
+<aside class="notes">
+        <ul>
+         
+        </ul>
+</aside>
