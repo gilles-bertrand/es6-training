@@ -100,11 +100,11 @@ const renderMarkup = (templateId, data) => {
       markup: `
           <div class="card-image">
                               <figure class="image is-3by1">
-                              <img src="https://static-maps.yandex.ru/1.x/?lang=en-US&ll=${
+                              <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/${
                                 data.lon
                               },${
         data.lat
-      }&z=13&l=map&size=600,180"
+      },9.67,0.00,0.00/433x144@2x?access_token=pk.eyJ1IjoidHJpcHR5ayIsImEiOiJjamo1ZWJuYnQxc3Z0M2tuM2ltMnNhZG9oIn0.ba1o5OxBs_kwIsdntxda1A"
                               alt="Placeholder image">
                               </figure>
                           </div>
