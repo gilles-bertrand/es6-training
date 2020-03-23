@@ -1,0 +1,44 @@
+body {
+    background: #ddd;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    background: #bbb;
+    display: flex;
+    justify-content: center;
+    margin-top: calc(50vh - 15px);
+    height: 30px;
+}
+
+.col {
+    // background: pink;
+    width: 20px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    // margin-right: 5px;
+    transition: all 0.3s;
+
+    &:last-child {
+        margin-right: 0;    
+    }
+
+    span {
+        text-align: center;
+        height: 30px;
+        font-size: 20px;
+        color: white;
+        // background: rebeccapurple;
+        line-height: 30px;
+    }
+}
+
+.deux-points {
+    color: white;
+    height: 30px;
+    // background: blue;
+    line-height: 30px;
+    font-size: 20px;
+}
