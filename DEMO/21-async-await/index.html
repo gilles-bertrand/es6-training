@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async Await</title>
+</head>
+<body>
+    
+    <video controls class="handsome"></video>
+    <script>
+    
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                  Intro                                  -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // imaginons une fonction d'addition :
+        // var somme = (num1, num2) => num1+num2;
+        // console.log(somme(10,20)) // 30
+
+        // Le résultat s'affiche tout de suite : c'est une fonction synchrone
+
+
+        // imaginons maintenant une fonction qui charge une image
+        var showImg = img => {
+            const i = document.createElement('img')
+            i.src = img;
+            i.alt = img;
+            i.id = 'image';
+            document.querySelector('body').appendChild(i);
+        };
+        showImg('https://picsum.photos/id/345/500/200');
+        console.log(document.getElementById('image').height); // risque de ne rien récupérer du tout pcq trop rapide
+        // C'est une fonction asynchrone
+
+        
+
+        // Je dois donc attendre un peu avant de lancer une requête après une fonction asynchrone, grâce à un setTimeOut par exemple ... :
+
+        setTimeout(() => { // par contre si on attend un peu...
+            console.log(document.getElementById('image').height);
+        }, 200)
+
+        // Mais on ne saura jamais si la requête est vraiment terminée.
+        // Alors il reste la solution des Promises...
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--        pas obligé de montrer c'est un rappel de fetch .then ...         -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // Exemple, awai async natif
+
+        // const fetch = fetch('https://jsonplaceholder.typicode.com/albums');
+        // console.log(fetch) // ça affiche la requête
+
+        // Donc là dessus, on fait un fetch
+        // fetch('https://jsonplaceholder.typicode.com/albums')
+        //     .then(res => {
+        //         console.log(res); // Ca affiche la response... Mais pas les données (pcq c un json)
+        //     })
+
+        // fetch('https://jsonplaceholder.typicode.com/albums')
+        //     .then(res => res.json())
+        //     .then(res => console.log(res)) // on a bien ttes nos données
+        //     .catch(err =>  console.error("Oh non... :" +err)) // prévoir si jamais il y a une erreur
+
+
+
+
+        // Autre exemple avec accès webcam du user :
+
+        // const video = document.querySelector('.handsome');
+        // navigator.mediaDevices.getUserMedia({ video: true })
+        //     .then(mediaStream => {
+        //         // console.log(mediaStream);
+        //         video.srcObject = mediaStream;
+        //         // video.load();
+        //         // video.play();
+        //     })
+        //     .catch(err => console.log(err))
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                         rappel custom promises                          -->
+// <!-- ----------------------------------------------------------------------- -->
+
+
+            // exemple, une fonction respiration donnerait :
+            // respirer(1000, function(){
+            //     respirer(2000, function(){
+            //         respirer(1000, function(){
+            //             respirer(1000, function(){
+            //                 // ... Tout ça donne un genre de .then()
+            //             })
+            //         })
+            //     })
+            // })
+            // Mais on ne veut pas faire ça...
+
+            // function breath(duree) {
+            //     return new Promise((resolve, reject) => {
+            //         if (duree < 500) { reject(Error(`Perdu ! Pas assez longtemps !`)) }
+            //         setTimeout(() => resolve(`Respiration retenue pendant : ${duree}ms`), duree)
+            //     })
+            // }
+
+            // breath(1000)
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(500)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(300)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(200)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(2000)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(200)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //         return breath(600)
+            //     })
+            //     .then(res => {
+            //         console.log(res)
+            //     })
+            //     .catch(err => console.error(err))
+
+
+                // Maintenant comment faire ça encore mieux ? Avec async await
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                               async await                               -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // montrer exemple avec alert qui arrête tout...
+        // setInterval(() => console.log(Date.now()), 1000) // faire un alert pendant le setInterval dans la console 
+
+        // repronons exemple précédent
+
+        function breath(duree) {
+            return new Promise((resolve, reject) => {
+                if (duree < 500) { reject(Error(`Perdu ! Pas assez longtemps !`)) }
+                setTimeout(() => resolve(`Respiration retenue pendant : ${duree}ms`), duree)
+            })
+        }
+
+        // J'ai besoin d'une fonction basée sur une promise pour pouvoir utilser l'async await
+        // Ce que j'aimerais faire c'est qqch du genre :
+
+        // await breath(1000)
+        // await breath(500)
+
+        // Mais on ne peut pas (cf erreur console) pcq await doit être fait dans une fonction async
+
+        // Créons donc une function :
+
+        // function go() {
+        //     await breath(600) // tjrs la même erreur tant qu'on n'a pas mis async devant function
+        // }
+
+        // go()
+
+        // ensuite :
+        // async function go() {
+        //     console.log('start')
+        //     const res = await breath(1000)
+        //     console.log(res)
+        //     const res2 = await breath(600)
+        //     console.log(res2)
+        //     const res3 = await breath(2000)
+        //     console.log(res3)
+        //     const res4 = await breath(800)
+        //     console.log(res4)
+        //     console.log('end')
+        // }
+
+        // go()
+
+
+        // Comment gérer les erreurs ? Le reject...
+        // Simplement en mettant dans un try catch par exemple :
+
+        // async function go() {
+        //     try {
+        //         console.log('start')
+        //         const res = await breath(1000)
+        //         console.log(res)
+        //         const res2 = await breath(600)
+        //         console.log(res2)
+        //         const res3 = await breath(2000)
+        //         console.log(res3)
+        //         const res4 = await breath(200)
+        //         console.log(res4)
+        //         console.log('end')
+        //     } catch(err) {
+        //         console.log('Oh nooon')
+        //         console.log(err)
+        //     }
+            
+        // }
+
+
+        // MAIS il y a une meilleure méthode :
+        // On va créer un fonction pour entourer notre fonction go, qui attend une fonction en paramètre, fait sa p'tite popote puis nous ressort une fonction
+
+        // function catchError(fn) { // exemple le .map prend aussi une fonction comme param, mais ici, on crée nous même une fonction qui demande une fonction
+        //     return function() {
+        //         // console.log(fn)
+        //         // return fn() // C'est comme si on faisait go()
+        //         return fn().catch((err) => {
+        //             console.error(err)
+        //         });
+        //     }
+        // }
+
+        // async function go() {
+        //     console.log('start')
+        //     const res = await breath(1000)
+        //     console.log(res)
+        //     const res2 = await breath(600)
+        //     console.log(res2)
+        //     const res3 = await breath(2000)
+        //     console.log(res3)
+        //     const res4 = await breath(200)
+        //     console.log(res4)
+        //     console.log('end')
+        // }
+
+        // // go() // Donc au lieu d'appeler la fonction directement, on va l'entourer d'une fonction :
+        // const fonctionEntouree = catchError(go); // dans la console taper fonctionEntouree (on voit le console.log de catchError), puis fonctionEntouree() (ça n'exécute pas notre fonction go, mais on voit qu'elle est passée)
+        // fonctionEntouree();
+
+        // Et si j'avais des paramètres à passer ?
+        // .
+        // .
+        // .
+
+        // function catchError(fn) {
+        //     return function(...args) { // ...Rest !
+        //         return fn(...args).catch((err) => { // ...Spread !
+        //             console.error(err)
+        //         });
+        //     }
+        // }
+
+        // async function go(prenom, nom) {
+        //     console.log(`start for ${prenom} ${nom}`);
+        //     const res = await breath(1000)
+        //     console.log(res)
+        //     const res2 = await breath(600)
+        //     console.log(res2)
+        //     const res3 = await breath(2000)
+        //     console.log(res3)
+        //     const res4 = await breath(200)
+        //     console.log(res4)
+        //     console.log('end')
+        // }
+        // const fonctionEntouree = catchError(go); 
+        // fonctionEntouree("Anissa", "Belkheir");
+
+
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                      await avec plusieurs promises                      -->
+// <!-- ----------------------------------------------------------------------- -->
+
+
+        // async function go() {
+        //     const p1 = fetch("https://api.github.com/users/wesbos")
+        //     const p2 = fetch("https://api.github.com/users/stolinski")
+        //     // J'attend que les deux reviennent : 
+        //     const res = await Promise.all([p1, p2])
+        //     const dataPromises = res.map((r) => r.json())
+        //     const [wes, scott] = await Promise.all(dataPromises);
+        //     console.log(wes, scott)
+        // }
+
+        // go()
+
+
+        // Autre exemple
+
+        async function getDatas(names) {
+            const promises = names.map((n) => fetch(`https://api.github.com/users/${n} `).then(r => r.json()))
+            // const [wes, scott] = await Promise.all(promises)
+            // console.log(wes, scott)
+            const people = await Promise.all(promises)
+            console.log(people)
+        }
+
+        getDatas(['wesbos', 'stolinski', "toto"])
+
+    </script>
+
+</body>
+</html>

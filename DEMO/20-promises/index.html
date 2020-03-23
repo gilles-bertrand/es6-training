@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promises</title>
+</head>
+<body>
+
+    <script>
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                  fetch                                  -->
+// <!-- ----------------------------------------------------------------------- -->
+        
+        // const promesseDePosts = fetch('datas.json'); // il ne rend pas les datas, mais préviens qu'il est allé chercher le json, mais qu'il ne les affichera que si on lui demande.
+        // console.log(promesseDePosts)
+
+        // // promesseDePosts.then(data => console.log(data)) // il reçoit une réponse, mais ne sait pas qu'on attend un JSON
+        // // promesseDePosts.then(data =>  data.json()).then(data => console.log(data)) // du coup, on lui dit d'abord que c du json, puis, je lui demande de me l'afficher
+        // // si c'était en ligne, ça prendrait +- 2 secondes avant de s'afficher... Le temps de recevoir la réponse du serveur.
+
+
+        // promesseDePosts
+        //     .then(data =>  data.json())
+        //     .then(data => console.log(data))
+        //     .catch(err => { // s'il y a une erreur affiche moi l'erreur
+        //         console.error(err)
+        //     });
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                       créer sa propre promesse :                        -->
+// <!-- ----------------------------------------------------------------------- -->
+
+
+        // const p = new Promise((resolve, reject) => {   //je crée une nouvelle "promesse" qui contient une fonction qui prend 2 params, resolve si c ok, reject si pas.
+        //     resolve('Anissa est trop cool'); // je fais un resolve en passant mes infos dans les ()
+        // }); 
+        // p
+        //     .then(data => {         // Une fois que ma promesse est faite, je lui demande de m'afficher mes datas.
+        //         console.log(data)   // --->  renvoit les datas obtenues dans le resolve de la promise
+        //     })
+
+
+
+        // on va simuler une requête ajax qui prend plus de temps en mettant un setTimeout :
+
+        // const p = new Promise((resolve, reject) => { 
+        //     setTimeout(() => {
+        //         // resolve('Anissa est trop cool');
+        //         // reject('Erreur') // On peut aussi appeler une erreur. Ca va afficher un "Uncaught (in promise) Erreur" dans la console. Je dois donc faire un catch
+        //         reject(Error('Erreur')); // Je mets le Error pour qu'il m'indique dans la console quelle est l'origine de l'erreur
+        //     }, 1000)
+        // }); 
+        // p
+        //     .then(data => { 
+        //         console.log(data) 
+        //     })
+        //     .catch(err => {
+        //         console.error(err)
+        //     })
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                  enchainer les promesses - cas concret                   -->
+// <!-- ----------------------------------------------------------------------- -->
+
+            // const posts = [
+            //     {title : "J'aime le JavaScript", author : "Anissa Belkheir", id : 1},
+            //     {title : "CSS !", author : "Guillaume Danzin", id : 2},
+            //     {title : "Astuces de dévelopeur", author : "Geoffrey Denys", id : 3}
+            // ]
+
+            // const authors = [
+            //     {name : "Geoffrey Denys", twitter: "@geoffreydenys", bio: "Le Chuck Norris du Web"},
+            //     {name : "Guillaume Danzin", twitter: "@guigui", bio: "Intègre et désintègre dans les règles de l'art"},
+            //     {name : "Anissa", twitter: "@manissa", bio: "Ze best formatrice EVER"}
+            // ]
+
+            // function getPostById(id) {
+            //     return new Promise((resolve, reject) => {
+            //         setTimeout(() => { // mettre un setTimeout pour imiter une requête vers la base de données
+            //             const post = posts.find(post => post.id === id)
+            //             post ? resolve(post) : reject(Error('Aucun post trouvé'))
+            //         }, 200);
+            //     })
+            // }
+
+            // function findAuthor(post) {
+            //     return new Promise((resolve, reject) => {
+            //         setTimeout(() => {
+            //             const authorDetails = authors.find(author => author.name === post.author)
+            //             if (authorDetails) {
+            //                 post.author = authorDetails;
+            //                 resolve(post);
+            //             } else {
+            //                 reject(Error("No author found"))
+            //             }
+            //         }, 200)
+            //     })
+            // }
+
+            // getPostById(2)
+            //     .then(post => {
+            //         console.log(post);
+            //         return findAuthor(post)
+            //     })
+            //     .then(post => {
+            //         console.log(post)
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                   travailler avec plusieurs promises                    -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // Si je n'ai pas un besoin particulier d'attendre qu'une promise soit finie avant de lancer l'autre, je peux tout faire en même temps
+
+        // const weather = new Promise((resolve) => {
+        //     setTimeout(() => {
+        //         resolve({temp: 29, conditions: 'Ensoleillé mais nuageux'});
+        //     }, 2000);
+        // });
+
+        // const tweets = new Promise((resolve) => {
+        //     setTimeout(() => {
+        //         resolve(["J'aime la réglisse", "Le BBQ c'est bien aussi!"]);
+        //     }, 500);
+        // });
+        
+        // Promise
+        //     .all([weather, tweets])
+        //     .then(responses => {  // attendra que TOUS soient terminés avant d'afficher le résultat.
+        //         const [weatherInfo, tweetsInfo] = responses // je déstructure...
+        //         console.log(weatherInfo, tweetsInfo)
+        //     })
+
+
+            // Cas concret avec appel API :
+
+        const postsPromise = fetch("https://jsonplaceholder.typicode.com/posts");
+        const streetCarPromise = fetch("http://data.ratp.fr/api/datasets/1.0/search/?q=paris");
+
+        Promise
+            .all([postsPromise, streetCarPromise])
+            .then(responses => {
+                // console.log(responses) je dois les transformer en json
+                return Promise.all(responses.map(res => res.json()))
+            })
+            .then(responses => {
+                console.log(responses)
+            })
+
+
+
+    </script>
+    
+</body>
+</html>

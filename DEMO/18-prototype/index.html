@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--               ne pas montrer tout ça, commencer plus bas                -->
+// <!-- ----------------------------------------------------------------------- -->
+
+    // let animal = {
+    //   eats: true
+    // };
+    // let rabbit = {
+    //   jumps: true
+    // };
+
+    // rabbit.__proto__ = animal;
+
+    // Si je cherche une propriété pour rabbit et qu'elle est manquante, javascript va automatiquement la prendre dans le prototype
+    
+
+    // J'aurais pu tout de suite indiquer le prototype ----------- :
+    let animal = {
+      eats: true,
+      walk() {
+        // alert('animal walks')
+      }
+    };
+    let rabbit = {
+      jumps: true,
+      __proto__ : animal
+    };
+    rabbit.walk();
+    console.log(rabbit.eats);
+
+
+    // --- GETTER, SETTER ----------
+    let user = {
+      name: "John",
+      surname: "Smith",
+
+      set fullName(value) {
+        [this.name, this.surname] = value.split(" ");
+      },
+
+      get fullName() {
+        return `${this.name} ${this.surname}`;
+      }
+    };
+
+    let admin = {
+      __proto__: user,
+      isAdmin: true
+    };
+
+    // alert(admin.fullName); // John Smith (*)
+
+    // setter triggers!
+    admin.fullName = "Alice Cooper"; // (**)
+
+
+    // --- ANIMAL HAS METHODS --------
+    // let animal = {
+    //   walk() {
+    //     if (!this.isSleeping) {
+    //       alert(`I walk`);
+    //     }
+    //   },
+    //   sleep() {
+    //     this.isSleeping = true;
+    //   }
+    // };
+
+    // let rabbit = {
+    //   name: "White Rabbit",
+    //   __proto__: animal
+    // };
+
+    // modifies rabbit.isSleeping
+    // console.log(rabbit.name);
+    // rabbit.sleep();
+    // animal.sleep()
+    // rabbit.walk()
+    // animal.walk()
+    // alert(rabbit.isSleeping); // true
+    // alert(animal.isSleeping); // undefined (no such property in the prototype) // faire exemple avec method .wakeup() qui mettrait isSleeping en false ?
+
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                              commencer ici                              -->
+// <!-- ----------------------------------------------------------------------- -->
+
+    function Dog(nom, race) {
+      this.nom = nom;
+      this.race = race;
+    }
+    //  C'est quoi l'héritage ?
+    // Montrer "maman Array" :  on peut faire un .join() ou un .pop() sur un array, mais pourtant je ne l'ai jamais ajouté !
+    Dog.prototype.aboyer = function() {
+      console.log(`Wouf wouf ! Je m'appelle ${this.nom}`);
+    }
+
+    // créer rex avanrt de mettre le premier proto
+    const rex = new Dog('Rex', 'Berger Allemand')
+    rex.aboyer();
+
+    // puis modifier le prototype après la création de rex :
+    Dog.prototype.aboyer = function() {
+      console.log(`Wouf wouf ! Je m'appelle ${this.nom} et je suis un ${this.race}`);
+    }
+    rex.aboyer();
+
+    Dog.prototype.caliner = function() {
+      console.log(`Je t'aime ! Slurp !`);
+    }
+
+    rex.caliner()
+
+    console.log(rex)  //---> montrer proto
+
+    // Exemple en créer une classe qui hérite d'une autre :
+
+    function Animal(type) {
+      this.type = type;
+    }
+    Animal.prototype.walk = function() {
+      return `${this.type} is walking`;
+    };
+
+    function Chat() {
+       // on appelle le constructeur parent (on lui envoie le type, si on ne le fait pas, on aura un "undefined is walking" en tapant chat.walk()
+      Animal.call(this, 'chat');
+    }
+    // La classe fille surcharge la classe parente
+    Chat.prototype = Object.create(Animal.prototype);
+    Chat.prototype.cri = function() {
+      return 'miaouw';
+    };
+
+    const chat = new Chat('chat');
+    const chien = new Animal('chien');
+    const felix = new Chat('chat');
+
+    console.log(chat); // montrer le proto
+    // console.log(chien);
+    // console.log(chat.type);
+    // console.log(chat.walk());
+    // console.log(chat.cri());
+    // console.log(felix.walk())
+    // console.log(chien.cri())
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="people">
+        <p>Wes</p>
+        <p>Kait</p>
+        <p>Snickers</p>
+    </div>
+
+    <script>
+    
+        const peoples = document.querySelectorAll('p');
+        // const names = peoples.map(p => p.innerText); // peoples pas un vrai array (NodeList)
+        // const names = Array.from(peoples).map(p => p.innerText) // il y a déjà un .map inclus en 2eme argument dans le .from =>
+        const names = Array.from(peoples, people => people.innerText)
+        console.log(names)
+
+        // autre exemple = Expliquer les arguments.
+        function sumAll() {
+            const nums = Array.from(arguments);
+            return nums.reduce((prev,next) => prev + next, 0);
+        }
+        sumAll(2,34,23,234,234,234234,234234,2342);
+
+
+
+        // .of pas très intéressant :
+        const nombres = Array.of(3,45,3,23,"ereer",54)
+        console.log(nombres)
+
+
+    </script>
+</body>
+</html>

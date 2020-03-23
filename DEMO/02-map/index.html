@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>.map()</title>
+</head>
+<body>
+
+
+    <script>
+
+        const numbers = [1, 2, 3, 4, 5, 6];
+        // const doubleNumbers = []; 
+        // for (let i = 0; i < numbers.length; i++) {
+        //     doubleNumbers.push(numbers[i]*2);
+        // }
+        // console.log(doubleNumbers);
+
+        // const doubleNumbers = numbers.map(function(num){
+        //     return num*2;
+        // });
+        // console.log(doubleNumbers);
+
+        const doubleNumbers = numbers.map(function(num, index){
+            if (index == 3) return num*3; // le chiffre 4 sera multiplié par 3
+            return num*2; // les autres par 2
+        });
+        console.log(doubleNumbers);
+
+        // plus tard, on apprendra à l'écrire comme ça :
+        // console.log(numbers.map(num => num*2));
+
+
+        //exo : faites moi un array contenant toutes les hauteurs des images
+        let images = [
+            { height: '34px', width: '67px', color: '#ff0032' },
+            { height: '54px', width: '167px', color: '#ee0032' },
+            { height: '74px', width: '267px', color: '#000032' },
+            { height: '4px', width: '367px', color: '#cc0032' },
+            { height: '94px', width: '667px', color: '#dd0032' }
+        ];
+        //soluce :
+        console.log(images.map(function(image){
+            return image.height;
+        }));
+
+
+        //Exos tirés de : https://gist.github.com/TessMyers/a252520dd9a8fe68f8e5
+        // Write a function capitalize that takes a string and uses .map to return the same string in all caps. 
+        // ex. capitalize('whoop') // => 'WHOOP'
+        // ex. capitalize('oh hey gurl') // => "OH HEY GURL"
+        var capitalize = function(string){
+        // code code code!
+            return string.split().map(s => {
+                return s.toUpperCase();
+            }).join();
+        }
+        console.log(capitalize('oh hey gurl'))
+
+        // Now write a new function called swapCase that takes a string of words and uses .map and your newly written capitalize() 
+        // function to return a string where every other word is in all caps. 
+        // Hint: look up Array.prototype.map on MDN and see what arguments the .map callback can take. 
+        // ex: swapCase('hey gurl, lets javascript together sometime') // => "HEY gurl, LETS javascript TOGETHER sometime"
+        var swapCase = function(string){
+        // Codeeeee
+            return string.split(' ').map((s, i) => {
+                return i%2 == 0 ? s.toUpperCase() : s.toLowerCase();
+            }).join(' ');
+        }
+
+        console.log(swapCase('hey gurl, lets javascript together sometime'));
+
+        // Write a function shiftLetters that takes a string and uses .map to return an encoded string with each letter shifted down the 
+        // alphabet by one. Hint: Use Look up the JS functions String.fromCharCode() and String.CharCodeAt() and see if you can use
+        // Ascii code to acomplish this.
+        // ex. shiftLetters('hello') // => 'ifmmp'
+        // ex. (shiftLetters('abcxyz') // => "bcdyz{"
+
+        // solution #1
+        var shiftLetters = function(mot) {
+            var lettres = mot.split("");
+                var res = lettres.map(function(lettre) {
+                    return String.fromCharCode(lettre.charCodeAt() + 1);
+                });
+                return res.join('');
+        }
+
+        // solution #2 si je split les phrases
+        // var shiftLetters = function(string){
+        //     var mots = string.split(" ");
+        //     var resultat = mots.map(function(mot){
+        //         var lettres = mot.split("");
+        //         var res = lettres.map(function(lettre) {
+        //             return String.fromCharCode(lettre.charCodeAt() + 1);
+        //         });
+        //         return res.join('');
+        //     });
+        //     return resultat.join(' ');
+        // }
+
+        // solution #2 en version light
+        // const shiftLetters = string => { return string.split(" ").map(word => { return word.split("").map(letter => { return String.fromCharCode((letter.charCodeAt() + 1)) }).join('') }).join(' ') }
+        
+        console.log(shiftLetters('abcd efghz tralala'));
+
+
+
+        // exo à continuer à partir de l'array images créé un peu plus haut :
+        // exo : créer fonction qui me retourne un array ou un objet des propriétés de l'array images
+        function tri(array, properties, returnType) {
+
+            if (!Array.isArray(properties)) {
+                return array.map(function (item) {
+                    return item[properties] //renvoie la valeur de la propriété de l'objet passé
+                })
+            } else {
+                if (returnType === 'object') {
+                    return array.map(function (item) {
+                        // console.log(item)
+                        let o = {}
+                        for (let i = 0, l = properties.length; i < l; i++) {
+                            o[properties[i]] = item[properties[i]]
+                        }
+                        return o;
+                    })
+                } else {
+                    return array.map(function (item) {
+                        return properties.map(function (property) {
+                            return item[property];
+                        })
+                    })
+                }
+            }
+        }
+
+        // console.log(tri(images, 'width'))
+        // console.log(tri(images, ['width', 'color'], 'object'))
+        console.log(tri(images, ['width', 'color'], 'array'))
+        // console.log(tri(images, ['width', 'color']))
+        // console.log(tri(images, 'color'))
+
+        let trips = [
+        { destination: "Mons", distance: 40 },
+        { destination: "Bruxelles", distance: 80 },
+        { destination: "Rasteau", distance: 900 },
+        { destination: "Barcelone", distance: 1400 },
+        ]
+        let destinations = tri(trips, 'destination')
+        console.log(destinations)
+
+
+    </script>
+    
+</body>
+</html>

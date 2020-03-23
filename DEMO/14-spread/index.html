@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>spread</title>
+</head>
+<body>
+    <script>
+    
+    const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+    const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+    // const pizzas = featured.concat(specialty); // Je dois fusionner les tableaux, c'est moche et pas intuitif
+
+    // Et je voulais ajouter une pizza entre les deux ?
+    // let pizzas =  [];
+    // pizzas = pizzas.concat(featured);
+    // pizzas.push('veg');
+    // pizzas = pizzas.concat(specialty);
+    // console.log(pizzas);
+
+    // const pizzas = [...featured, ...specialty];
+    const pizzas = [...featured, 'veg', ...specialty];
+
+
+    // Si je duplique il se passe quoi ?
+    const fridayPizzas = pizzas;
+    console.log(fridayPizzas) // ok c'est les mêmes, normal.
+    // Et si je change le contenu de fridayPizzas ?
+    fridayPizzas[0] = "Autre pizza";
+    console.log(fridayPizzas);
+    console.log(pizzas) // L'originale a changé ! :
+
+    // J'aurais pu utiliser cette méthode pour ajouter le contenu de pizzas dans fridayPizzas :
+    // const fridayPizzas = [].concat(pizzas); // MAis... PAs super joli
+    // const fridayPizzas = [...pizzas] // Bcp plus simple
+
+    // EXO : JUMPING LETTERS avant de continuer !!!
+
+    //Autres exemples :
+    // const people = Array.from(document.querySelectorAll('.people p'));
+    const people = [...document.querySelectorAll('.people p')];
+    const names = people.map((person) => person.textContent );
+
+    const deepDish = {
+        pizzaName: 'Deep Dish',
+        size: 'Medium',
+        ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+    };
+
+    const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
+    // console.log(shoppingList);
+
+
+    // Autre exemple, je veux supprimer le commentaire qui a l'index 2 :
+    // C'est semble t il plus rapide qu'un splice
+    const comments = [
+        { id: 123456, text: 'I love your dog!' },
+        { id: 789101, text: 'Cuuuuuute!' },
+        { id: 234567, text: 'You are so dumb' },
+        { id: 891011, text: 'Nice work on this Wes!' },
+    ];
+    const id = 234567;
+    const commentIndex = comments.findIndex(comment => comment.id === id);
+
+    // On créer un nouvel array dans lequel on va venir mettre les commentaires avant celui qu'on ne veut plus, et ceux après :
+    // const newComments = [comments.slice(0, commentIndex), comments.slice(commentIndex + 1)];
+    // Mais... On obtient deux arrays dans un array !
+    const newComments = [...comments.slice(0, commentIndex), ...comments.slice(commentIndex + 1)];
+    // comments.splice(commentIndex, 1);
+    console.log(comments)
+
+
+    // Spread dans une fonction :
+    const inventors = ['Einstein', 'Newton', 'Galileo'];
+    const newInventors = ['Musk', 'Jobs'];
+    inventors.push(newInventors); // Je me retrouve avec un array dans l'array...
+    inventors.push.apply(inventors, newInventors); // Un peu tordu !
+    inventors.push(...newInventors);
+    console.log(inventors);
+
+    // Encore un exemple :
+    function sayHi(prenom, nom) {
+        alert(`Bonjour ${prenom} ${nom}`)
+    }
+
+    const noms = ["Anissa", "Belkheir"];
+    sayHi(noms[0], noms[1])
+    sayHi(...noms);
+ 
+    </script>
+</body>
+</html>

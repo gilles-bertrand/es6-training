@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destructurer</title>
+</head>
+<body>
+    <script>
+        
+        const person = {
+            first: 'Wes',
+            last: 'Bos',
+            country: 'Canada',
+            city: 'Hamilton',
+            twitter: '@wesbos'
+        };
+
+        // Ce qu'on fait pour le moment :
+        // const first = person.first;
+        // const last = person.last;
+
+        // En déstructurant :
+        // const { first, last, twitter } = person;
+
+
+        const wes = {
+            first: 'Wes',
+            last: 'Bos',
+            links: {
+                social: {
+                twitter: 'https://twitter.com/wesbos',
+                facebook: 'https://facebook.com/wesbos.developer',
+                },
+                web: {
+                blog: 'https://wesbos.com'
+                }
+            }
+        };
+
+        // ce qu'on fait :
+        // const twitter = wes.links.social.twitter;
+        // const facebook = wes.links.social.facebook;
+
+        // mieux :
+        const { twitter, facebook } = wes.links.social;
+
+        // sauf que j'ai déjà utilisé la const twitter un peu plus haut =>
+        const { twitter: tweet, facebook: fb } = wes.links.social; // Je renomme !
+
+
+        // Et si la valeur n'existe pas dans l'objet ?
+        const settings = {
+            speed: 150
+        }
+        // const { speed, width } = settings; 
+        // console.log(width); // undefined
+
+        // Je donne une valeur par défaut !
+        const { speed = 750, width = 500 } = settings;
+
+
+        // /!\ Attention !!! Pas pareil que la condition qu'on utilisait habituellement
+        // en déstructurant, la valeur par défaut ne fonctionne que si c'est "undefined". Si c'est null, false ou 0, ça reste une valeur.
+
+        // const mySpeed = 0;
+        // const speed = mySpeed || 760; 
+        // console.log(speed); // 760!
+        // Why? Because ES6 destructuring default values only kick in if the value is undefined. null, false and 0 are all still values!
+
+        // const { dogName = 'snickers' } = { dogName: undefined }
+        // console.log(dogName) // what will it be? 'snickers'!
+
+        // const { dogName = 'snickers' } = { dogName: null }
+        // console.log(dogName) // what will it be? null!
+
+        // const { dogName = 'snickers' } = { dogName: false }
+        // console.log(dogName) // what will it be? false!
+
+        // const { dogName = 'snickers' } = { dogName: 0 }
+        // console.log(dogName) // what will it be? 0!
+
+
+        // déstructurer, renommer et donner une valeur par défaut :
+        // const person = {
+        //     first: 'Wes',
+        //     last: 'Bos',
+        // };
+
+        // const { first: firstName } = person;
+        // console.log(firstName); // Wes
+        // const { middle: middleName = 'Super Rad' } = person;
+        // console.log(middleName); // 'Super Rad'
+
+
+
+        // Déstructurer des arrays :
+        const details = ['Wes Bos', 123, 'wesbos.com'];
+        const [name, ID, website] = details;
+        console.log(name, ID, website); // Wes Bos, 123, wesbos.com
+
+
+        //Déstructurer une chaine de caractère :
+        const data = 'Basketball,Sports,90210,23';
+        const [itemName, category, sku, inventory] = data.split(',');
+
+
+        // Déstructurer avec le Rest... (à voir plus tard)
+        const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
+        const [captain, assistant, ...players] = team;
+
+
+        //inverser les valeurs de deux variables :
+        let inRing = "Hulk Hogan";
+        let onSide = "The Rock";
+
+        //Ce qu'on fait en temps normal = 
+        var temp = inRing;
+        inRing = onSide;
+        onSide = temp;
+
+        // Mais maintenant :
+        [inRing, onSide] = [onSide, inRing];
+
+
+
+        // Déstructurer fonctions :
+        function convertCurrency(amount) {
+            const converted = {
+                USD: amount * 1.12,
+                GBP: amount * 0.90,
+                RUS: amount * 71.65,
+                JAP: amount * 121.75
+            };
+            return converted;
+        }
+
+        const hundo = convertCurrency(100);
+        console.log(hundo);
+
+        // const { USD, GBP, RUS, JAP } = convertCurrency(100);
+        // console.log(USD, GBP, RUS, JAP);
+
+        // Je ne suis pas obligée de tt prendre vu que c un obj :
+        const { USD, GBP } = convertCurrency(100);
+
+
+
+        // Déstructurer les arguments d'un fonction : 
+        function tipCalc({total, tip = 0.15, tax = 0.13}) {
+            return total + (tip * total) + (tax * total);
+        }
+
+        // const bill = tipCalc({total: 100, tip: 0.3, tax : 0.11});
+        // const bill = tipCalc({total: 100, tax : 0.11});
+        // const bill = tipCalc({tax : 0.11, total: 100});
+        // const bill = tipCalc() // si je ne passe aucun objet => ne peut pas déstructurer dans les paramètres de la fonction et donc il faudra écrire :
+        // function tipCalc({total, tip = 0.15, tax = 0.13} = {}) // pour donner un objet par défaut à déstructurer
+        console.log(bill)
+
+    </script>
+</body>
+</html>

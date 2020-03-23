@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrow functions</title>
+</head>
+<body>
+
+    <button>bouton</button>
+
+    <script>
+
+        const prenoms = ["Anissa", "Monia", "Amina", "Khaled", "Leila", "Mohammed-Chakib"];
+        // const nomsEntiers = prenoms.map(function(prenom) {
+        //     return prenom + ' Belkheir';
+        // });
+        // const nomsEntiers = prenoms.map((prenom) => {
+        //     return prenom + ' Belkheir';
+        // });
+        // const nomsEntiers = prenoms.map(prenom => {
+        //     return prenom + ' Belkheir';
+        // });
+        const nomsEntiers = prenoms.map(prenom => prenom + " Belkheir");
+        console.log(nomsEntiers);
+
+        // Si je n'ai pas de params :
+        var sayHello = () => console.log('Hello');
+        sayHello();
+
+        // Autre exemple :
+        const ages = [25, 35, 45, 65, 75, 85, 95];
+        // const retraite = ages.filter(function(age){
+        //     return age >=60
+        // })
+        const retraite = ages.filter(age => age >= 67);
+        console.log(retraite);
+
+
+        // exo
+        const race = "100m haies";
+        const winners = ["Henri", "Alfred", "Josée"];
+        const win = winners.map((winner, i) => ({ name: winner, race, place: i + 1 }))
+
+        // const win = winners.map(function(winner,i){
+        //     return {name:winner,race,place:i+1}
+        // })
+        
+        // resultat attendu
+        // [
+        //     {name:"Henri", race:"100m haies", place:1},
+        //     {name:"Alfred", race:"100m haies", place:2},
+        //     {name:"Josée", race:"100m haies", place:3}
+        // ]
+        console.table(win)
+
+
+        // le this ne fonctionne pas de la même façon dans une arrow function :
+        // sans arrow function :
+        function Voiture() {
+            var self = this; // je sauvegarde this
+            self.kilometers = 100;
+            setTimeout(function(){
+                self.kilometers +=10; // parce qu'ici this ne vaut plus la même chose
+                console.log(self.kilometers)
+            },2000)
+        }
+        // Voiture();
+        new Voiture();
+
+        //avec une arrow function
+        function Voiture(){
+            this.kilometres = 100; // je peux utiliser this ici
+            setTimeout(()=>{
+                this.kilometres += 10; // il sera tjrs le même là !
+                console.log(this.kilometres);
+            },2000)
+        }
+        // Voiture();
+        new Voiture();
+
+
+        //----------------------------------
+        // Quand ne pas utiliser les arrow functions :
+
+        // When you really need `this`
+        const button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            console.log(this);
+            this.classList.toggle('on');
+        });
+
+        // When you need a method to bind to an object
+        const person = {
+            points: 23,
+            score() { // score : function() {} 
+            console.log(this);
+            this.points++;
+            }
+        }
+
+        // When you need to add a prototype method
+        class Car {
+            constructor(make, colour) {
+            this.make = make;
+            this.colour = colour;
+            }
+        }
+
+        const beemer = new Car('bmw', 'blue');
+        const subie = new Car('Subaru', 'white');
+
+        Car.prototype.summarize = function() {
+            return `This car is a ${this.make} in the colour ${this.colour}`;
+        };
+
+        // console.log(beemer.summarize());
+
+
+
+        // When you need arguments object
+        const orderChildren = function() {
+            const children = Array.from(arguments);
+            return children.map((child, i) => {
+            return `${child} was child #${i + 1}`;
+            })
+            console.log(arguments);
+        }
+
+        //------------------
+
+        // ARGUMENTS PAR DEFAUT
+
+        // Ce qu'on aurait fait :
+        // function calculateBill(total, tax, tip) {
+        //     if(tax === undefined) {
+        //         tax = 0.13;
+        //     }
+        //     if(tip === undefined) {
+        //         tip = 0.15;
+        //     }
+        //     return total + (total * tax) + (total * tip);
+        // }
+
+        // const totalBill = calculateBill(100);
+        // console.log(totalBill);
+
+        // // ou alors :
+        // function calculateBill(total, tax, tip) {
+        //     tax = tax || 0.13;
+        //     tip = tip || 0.15;
+        //     return total + (total * tax) + (total * tip);
+        // }
+
+        // const totalBill = calculateBill(100);
+        // console.log(totalBill);
+
+        // Des arguments par défaut
+        function calculateBill(total, tax = 0.13, tip = 0.15) {
+            return total + (total * tax) + (total * tip);
+        }
+
+        const totalBill = calculateBill(100, undefined, 0.25);
+        console.log(totalBill);
+
+
+        // voir exos wes bos 02 arrow functions
+
+
+    </script>
+    
+</body>
+</html>

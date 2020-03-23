@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>var let const</title>
+</head>
+<body>
+    
+
+    <script>
+
+        for (var i = 0; i < 10; i++) { //avec VAR, mes variables ne sont pas scopées (retenues) dans les {}
+            console.log(i)
+        }
+        console.log(i) // i existe bien en dehors, et dans ce cas-ci il est égal à 10.
+
+
+        for (let j = 0; j < 10; j++) { //avec LET, je "privatise" mon j à l'intérieur des {} du for.
+            console.log(j)
+        }
+        // console.log(j) // Un erreur s'affiche : "j is not defined". La variable n'est pas connue, pas déclarée, en dehors de la boucle
+
+        const lettres = "abcd";
+        // lettres = "efgh"; // Une constante ne peut pas être modifiée.
+
+        const obj = {};
+        obj.demo = "Demonstration";
+        console.log(obj);
+        
+        Object.freeze(obj);
+
+        obj.name = "Anissa";
+        console.log(obj);
+
+        const liste =  ['Anissa', 'Estelle'];
+        liste.push('Sarah');
+
+        Object.freeze(liste); // Je peux aussi freezer un array ou objet déclarés via un var ou let. Mais quel est l'intérêt ?
+        // Une fois qu'un objet a été freezé, je ne peux plus revenir en arrière
+        // liste.push('???');
+
+        console.log(liste)
+
+    </script>
+</body>
+</html>

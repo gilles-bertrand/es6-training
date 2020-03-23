@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reduce()</title>
+</head>
+<body>
+
+    <script>
+    
+    // Jusqu'à présent, on a vu des méthodes pour manipuler des arrays et qui retournent des arrays.
+    var numbers = [10, 20, 30];
+    var somme = 0;
+    for (let i = 0; i < numbers.length; i++) {
+            somme += numbers[i];
+    }
+    console.log(somme);
+
+    // Ce n'est plus le cas ici.
+    console.log(numbers.reduce(function(total, num) {
+        return total + num;
+    }, 0));
+
+
+
+    // Autre exemple :
+    var primaryColors = [
+        {color :'red'},
+        {color :'yellow'},
+        {color :'blue'}
+    ];
+    // ['red','yellow','blue']
+    console.log(
+        primaryColors.reduce(function(current, next){
+            current.push(next.color);
+            return current;
+        },[])   
+    );
+
+    const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig' ];
+
+    //ETAPE 1 :
+    // const count = fruitBasket.reduce( (tally, fruit) => {
+    //     tally[fruit] = 1;
+    //     return tally;
+    // }, {})
+
+    //ETAPE 2 :
+    // const count = fruitBasket.reduce((tally, fruit) => {
+    //     if (!tally[fruit]) {
+    //         tally[fruit] = 1;
+    //     } else {
+    //         tally[fruit] = tally[fruit] + 1;
+    //     }
+    //     return tally;
+    // }, {});
+
+    //ETAPE 3 :
+    const count = fruitBasket.reduce( (tally, fruit) => {
+    tally[fruit] = (tally[fruit] || 0) + 1 ;
+    return tally;
+    } , {})
+
+    count // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
+
+
+
+    // exos : https://gist.github.com/TessMyers/a252520dd9a8fe68f8e5
+    // REDUCE
+
+    // Write a function that takes a string and returns an object representing the character 
+    // count for each letter. Use .reduce to build this object. 
+    // ex. countLetters('abbcccddddeeeee') // => {a:1, b:2, c:3, d:4, e:5}
+    var countLetters = function(string){
+    // your code here
+    };
+
+    // possible solution trouvée sur le git :
+    // const countLetters = (string) => {
+    //     return string.split("").reduce((accumulator, currentValue) => {
+    //         accumulator.hasOwnProperty(currentValue) ?
+    //             accumulator[currentValue]++ :
+    //             accumulator[currentValue] = 1
+    //         return accumulator
+    //     }, {})
+    // }
+
+    // Write a function that takes a string and a target, and returns true or false if the target is present in the string. Use
+    // .reduce to acomplish this.
+    // ex. isPresent('abcd', 'b') // => true
+    // ex. isPresent('efghi', 'a') // => false
+    var isPresent = function(string, target) {
+    // GO GO GADGET CODE!
+    }
+
+    // possible solution trouvée sur le git
+    // const isPresent = (string, target) => {
+    //     return string.split("").reduce((accumulator, currentValue) => {
+    //         if(currentValue === target) accumulator = true;
+    //             return accumulator;
+    //     }, false)
+    // }
+
+
+
+
+    // Exo : créer une fonction qui permet de déterminer s'il y a autant de ( que de ).
+    // ((()(())   -> pas bon
+    // ((()))(()) -> bon
+
+    function testParentheses(string){
+        return !string.split('').reduce(function(prev,char){
+            if (prev < 0) { // Empêcher des )( 
+                // console.log('1 : '+ prev)
+                return prev;
+            }
+
+            if (char === '(' ) { 
+                // console.log('2 : '+ (prev+1))
+                return ++prev;
+            }
+
+            if (char === ')' ) {
+                // console.log('3 : '+ (prev-1))
+                return --prev;
+            }
+
+            // console.log('4 : '+ prev) 
+            return prev; // s'il y a un autre caractère
+
+        }, 0);
+    }       
+    console.log(testParentheses('((()) )()'));
+
+
+
+    //exo : 
+    function elementsSum(arr, c = 0){
+        let count = arr.length;
+        return c + arr
+            .map(el => el[--count] || 0)
+            .reduce((p, n) => p + n, 0);
+    }
+
+    console.log(elementsSum([[3, 2, 1, 0], [4, 6, 5, 3, 2], [9, 8, 7, 4]])); // 16
+    console.log(elementsSum([[3], [4, 6, 5, 3, 2], [9, 8, 7, 4]])); //15
+    console.log(elementsSum([[3, 2, 1, 0], [4, 6, 5, 3, 2], []])); //7
+    console.log(elementsSum([[3, 2, 1, 0], [4, 6, 5, 3, 2], []], 5)); //12
+    console.log(elementsSum([[3, 2], [4], []])); //0
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+        
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                 etape 1                                 -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // Class declaration :
+        // class Dog {
+
+        // }
+
+        // Class expression : (pareil à la création d'une fonction dans une variable)
+
+        // const Dog = class {
+
+        // }
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                 etape 2                                 -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        // Les classes contiennent des methodes. La seule méthode obligatoire est celle qu'on appelle le constructeur
+        // class Dog {
+        //     constructor(nom, race) { // elle va définir ce qu'il se passe quand qqn crée une nouvelle version (une instance)
+        //         this.nom = nom;
+        //         this.race = race;
+        //     }
+        //     aboyer() {
+        //         console.log(`Wouf wouf ! Je m'appelle ${this.nom} et je suis un ${this.race}`);
+        //     }
+        //     caliner() {
+        //         console.log(`Je t'aime ! Slurp !`);
+        //     }
+        // }
+
+        // const rex = new Dog("Rex", "Berger Allemand");
+        // const galway = new Dog('Galway', "Leonberg");
+
+        // galway.aboyer()
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                 etape 3                                 -->
+// <!-- ----------------------------------------------------------------------- -->
+
+            // ajout du static //
+    
+
+        // class Dog {
+        //     constructor(nom, race) { // elle va définir ce qu'il se passe quand qqn crée une nouvelle version (une instance)
+        //         this.nom = nom;
+        //         this.race = race;
+        //     }
+        //     aboyer() {
+        //         console.log(`Wouf wouf ! Je m'appelle ${this.nom} et je suis un ${this.race}`);
+        //     }
+        //     caliner() {
+        //         console.log(`Je t'aime ! Slurp !`);
+        //     }
+        //     static info() { // ne sera accessible que via Dog.info()
+        //         console.log("Un chien c'est 10x mieux qu'un chat !")
+        //     }
+        // }
+
+        // const rex = new Dog("Rex", "Berger Allemand");
+        // const ulrok = new Dog('Ulrok', "Leonberg");
+
+        // ulrok.aboyer();
+        // // ulrok.info() // Ne connait pas
+        // Dog.info();
+
+    
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                 etape 4                                 -->
+// <!-- ----------------------------------------------------------------------- -->
+
+            // getters et setters //
+
+
+        // class Dog {
+        //     constructor(nom, race) { // elle va définir ce qu'il se passe quand qqn crée une nouvelle version (une instance)
+        //         this.nom = nom;
+        //         this.race = race;
+        //     }
+        //     aboyer() {
+        //         console.log(`Wouf wouf ! Je m'appelle ${this.nom} !`);
+        //     }
+        //     caliner() {
+        //         console.log(`Je t'aime ! Slurp !`);
+        //     }
+        //     static info() { // ne sera accessible que via Dog.info()
+        //         console.log("Un chien c'est 10x mieux qu'un chat !")
+        //     }
+
+        //     get description() { // Ce n'est pas une méthode, mais un genre de propriété qui envoie une info quand on l'appelle = un getter
+        //         console.log(`${this.nom} fait partie de la race ${this.race}`);
+        //     }
+
+        //     set nickname(value) {
+        //         this.nick = value.trim() // j'aurais pu appeler aussi la var nickname sans soucis.
+        //     }
+
+        //     get nickname() {
+        //         console.log(this.nick);
+        //     }
+        // }
+
+        // const rex = new Dog("Rex", "Berger Allemand");
+        // const ulrok = new Dog('Ulrok', "Leonberg");
+
+        // ulrok.aboyer();
+        // // ulrok.info() // Ne connait pas
+        // Dog.info();
+
+        // ulrok.description // (sans les parenthèses...)
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                      etape 5 - étendre des classes                      -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        class Animal {
+            constructor(nom) {
+                this.nom = nom;
+                this.soif = 100;
+                this.bide = [];
+            }
+
+            boire() {
+                this.soif -= 10;
+                return this.soif;
+            }
+
+            manger(bouffe) {
+                this.bide.push(bouffe);
+                return this.bide;
+            }
+        }
+
+        class Dog extends Animal { // bien faire attention à la créer audessus de elephant pour provoquer l'erreur not defined
+            constructor(nom, race) {
+                super(nom) // Me permet d'instancier la classe étendue et donc faire partir l'erreur not defined
+                // this.nom = nom; // Je vais avoir une erreur (is not defined) parce que je n'ai pas encore d'instance de Animal --> super - ensuite, je peux supprimer nom pcq sera instancié dans Animal.
+                this.race = race;
+            }
+
+            aboyer() {
+                console.log("woufwouf, je suis un chien")
+            }
+        }
+
+        const elephant = new Animal("fanfan");
+        console.log(elephant);
+
+        const ulrok = new Dog('Ulrok', 'Leonberg');
+        console.log(ulrok)
+
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--         etape 6 - étendred des classes par défaut (comme Array)         -->
+// <!-- ----------------------------------------------------------------------- -->
+
+        class CollectionDeFilms extends Array {
+            constructor(name, ...items) {
+                super(...items);
+                this.name = name;
+            }
+
+            add(movie) {
+                this.push(movie);
+            }
+
+            topRated(limit = 10) {
+                return this.sort((a,b) => a.stars > b.stars ? -1 : 1).slice(0, limit);
+            }
+        }
+
+        const films = new CollectionDeFilms("Les préférés d'Anissa",
+            {name : "White House Down", stars : 10},
+            {name : "Taken", stars : 9},
+            {name : "Gladiator", stars : 8},
+            {name : "Orgueil et préjugés", stars : 8}
+        )
+
+        films.add({name : "Dragons", stars : 7});
+        films.add({name : "Le Seigneur des Anneaux", stars : 10});
+
+        // Si je veux afficher tous les films et que je fais une boucle for in, ça va m'afficher les films ET le nom.
+        for (let film in films) { console.log(films[film]) }
+        // Mais pas si j'utilise une method qui ne fonctionne que sur les objet itérables :
+        films.forEach(el => console.log(el))
+
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                                Exercice                                 -->
+// <!-- ----------------------------------------------------------------------- -->
+
+class Clock {
+  constructor({ template }) {
+    this.template = template;
+  }
+
+  render() {
+    let date = new Date();
+
+    let hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+
+    let mins = date.getMinutes();
+    if (mins < 10) mins = '0' + mins;
+
+    let secs = date.getSeconds();
+    if (secs < 10) secs = '0' + secs;
+
+    let output = this.template
+      .replace('h', hours)
+      .replace('m', mins)
+      .replace('s', secs);
+
+    console.log(output);
+  }
+
+  stop() {
+    clearInterval(this.timer);
+  }
+
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), 1000);
+  }
+}
+
+
+let clock = new Clock({template: 'hhmmss'});
+clock.start();
+
+
+
+
+// <!-- ----------------------------------------------------------------------- -->
+// <!--                            soluce de jeremy                             -->
+// <!-- ----------------------------------------------------------------------- -->
+
+// class DateTime {
+//     constructor(format){
+//         this.format = format;
+//     }
+//     time() {
+//         const date = new Date();
+//         const result = this.format.replace("h",date.getHours()).replace("m",date.getMinutes()).replace("s",date.getSeconds());
+//         console.log(result)
+//         return result;
+//     }
+//     start() {
+//         this.timer = setInterval(() => {
+//             this.time();
+//         }, 1000);
+//     }
+//     stop() {
+//        clearInterval(this.timer);
+//     }
+// }
+
+// const clock = new DateTime("h:m:s");
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

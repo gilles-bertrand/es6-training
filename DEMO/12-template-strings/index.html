@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template strings</title>
+</head>
+<body>
+
+    <div id="computers"></div>
+    <div class="output"></div>
+    
+    <script>
+
+
+    // fini la concaténation :
+    // const name = "Monia"
+    // const town = "Tervuren"
+    // console.log(`Ma soeur, ${name} habite à ${town}`);
+
+    // exemple, du multilignes :
+    // let texte= "ceci est un test de \
+    // multiligne";
+    // let texte2 = "autre essai";
+    // texte2+="on ajoute"
+    // let texte3 =`ceci est plus 
+    // facile à gérer`;
+
+    // exemple
+    // const person = {
+    //     name: 'Anissa',
+    //     job: 'Web Developer',
+    //     city: 'Mons',
+    //     bio: 'Anissa est la meilleure formatrice ever... :)',
+    // };
+
+    // const markup = `
+    //     <div class="person">
+    //     <h2>
+    //         ${person.name}
+    //         <span class="job">${person.job}</span>
+    //     </h2>
+    //     <p class="location">${person.city}</p>
+    //     <p class="bio">${person.bio}</p>
+    //     </div>
+    // `;
+
+    // console.log(markup);
+    // document.body.innerHTML = markup;
+
+    // // Exemple avec une boucle (idem exemple suivant)
+    // exo pour récap'
+    // const computers =[
+    // {name : 'apple', ram: 16},
+    // {name : 'IBM', ram: 6},
+    // {name : 'tuxedo', ram: 32}
+    // ]
+    // const markup = `
+    // <ul>
+    // ${computers.map(computer => `<li>${computer.name}</li>`).join('')}
+    // </ul>
+    // `;
+    // document.getElementById('computers').innerHTML = `computers ${markup}`
+    
+    // exemple avec une boucle
+    // const dogs = [
+    //     { name: 'Snickers', age: 2 },
+    //     { name: 'Hugo', age: 8 },
+    //     { name: 'Sunny', age: 1 }
+    // ];
+
+    // const markup = `
+    //     <ul class="dogs">
+    //     ${dogs.map(dog => `
+    //         <li>
+    //         ${dog.name}
+    //         is
+    //         ${dog.age * 7}
+    //         </li>`).join('')}
+    //     </ul>
+    // `;
+    // document.body.innerHTML = markup;
+
+
+    // exemple avec un if : // pour prochain cours créer un array avec plusieurs songs dont certaines sans featuring
+    // const song = {
+    //     name: 'Dying to live',
+    //     artist: 'Tupac',
+    //     featuring: 'Biggie Smalls'
+    // };
+
+    // const markup = `
+    //     <div class="song">
+    //     <p>
+    //         ${song.name} — ${song.artist}
+    //         ${song.featuring ? `(Featuring ${song.featuring})` : ''}
+    //     </p>
+    //     </div>
+    // `;
+
+    // document.body.innerHTML = markup;
+
+
+    // avec une fonction !
+    // const beer = {
+    //     name: 'Cuvée des Trolls',
+    //     brewery: 'Dubuisson',
+    //     keywords: ['trouble', 'fruitée', 'sucrée', 'amère']
+    // };
+
+    // function renderKeywords(keywords) {
+    //     return `
+    //     <ul>
+    //         ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+    //     </ul>
+    //     `;
+    // }
+
+    // const markup = `
+    //     <div class="beer">
+    //     <h2>${beer.name}</h2>
+    //     <p class="brewery">${beer.brewery}</p>
+    //     ${renderKeywords(beer.keywords)}
+    //     </div>
+    // `;
+
+    // document.body.innerHTML = markup;
+
+
+    // exercice :
+    // let createLink = (buttonData) => {
+    //     return `<li><a href="${buttonData.link}">${buttonData.texte}</a></li>`
+    // }
+
+    // let buttons = [
+    //     { texte: 'triptyk', link: "http://www.triptyk.eu" },
+    //     { texte: 'technocite', link: "http://www.technocite.be" },
+    //     { texte: 'ember', link: "https://www.emberjs.com/" },
+    //     { texte: 'glimmer', link: "https://glimmerjs.com/" },
+    // ]
+
+    // let markup = `
+    // <h1>test of generating</h1>
+    // <ul>
+    //     ${buttons.map(button => createLink(button)).join('')}
+    // </ul>
+    // `;
+    // let markup = `
+    //     <div class="tt">${maFct(buttons)}</div>
+    // `
+    // function maFct(items) {
+    //     return `
+    //         <ul>
+    //             ${items.map(item => `
+    //                 <li><a href="${item.link}">${item.texte}</a></li>
+    //             `).join('')}    
+    //         </ul>
+    //     `
+    // }
+    // document.querySelector('body').innerHTML = markup;
+
+
+
+    // tagged strings :
+
+    //step 1
+    function highlight() {
+    // do something
+    }
+
+    const name = 'Snickers';
+    const age = '100';
+    const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+    console.log(sentence)
+
+
+
+    //step 2 :
+    // function highlight() {
+    //     return 'cool';  //remplace tout le texte par cool
+    // }
+
+
+    //step 3 :
+    // function highlight(strings, name, age) {
+    //     debugger;
+    // }
+
+    //step 4 :
+
+
+    function highlight(strings, ...values) { // (si je ne montre pas le ...values tout de suite, je risque d'avoir un soucis avec la boucle... ou alors pas de boucle)
+        let str = '';
+        strings.forEach((string, i) => {
+        str += `${string} <mark>${values[i] || ''}</mark>`; // Je mets le || '' parce que j'ai tjrs une values en trop dans la boucle
+        });
+        return str;
+    }
+
+    // alternative si je ne peux pas utiliser le ...values
+    // function highlight(strings, name, age) {
+    //     let str = '';
+    //     str += `${strings[0]}<mark>${name}</mark>${strings[1]}<mark>${age}</mark>${strings[2]}`
+    //     return str;
+    // }
+
+    // const name = 'Snickers';
+    // const age = 100;
+
+    // const sentence = highlight`Mon chien s'appelle ${name} et il a ${age} ans`;
+    // document.querySelector('.output').innerHTML = sentence;
+    // console.log(sentence);
+
+
+
+
+    // raccourci pour montrer comment utiliser $ en vanilla...
+    // window.$ = window.document.querySelector.bind(document);
+    // console.log($('p').innerHTML);
+
+    </script>
+</body>
+</html>

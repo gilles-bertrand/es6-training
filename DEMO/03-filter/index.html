@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>.filter()</title>
+</head>
+<body>
+
+    <script>
+
+        // // filtrer les nombres plus grands que 50
+        // var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
+
+        // var filteredNumbers = [];
+        // for (let i = 0; i < numbers.length; i++) {
+        //     if (numbers[i] > 50) {
+        //         filteredNumbers.push(numbers[i]);
+        //     }
+        // }
+        // console.log(filteredNumbers);
+
+        // // solution avec .filter() :
+        // console.log(numbers.filter(function(num) {
+        //     return num > 50;
+        // }));
+
+        // // exo : filtrer les admins
+        // var users = [
+        //     { id: 1, admin: true },  
+        //     { id: 2, admin: false },
+        //     { id: 3, admin: false },
+        //     { id: 4, admin: false },
+        //     { id: 5, admin: true }
+        // ];
+
+        // //solution
+        // console.log(users.filter(function(user) {
+        //     return user.admin;
+        // }));
+
+        // //exo : fonction qui fait l'inverse de filter
+        // // function reject(array, property, value) {
+        // //     return array.filter(function(item) {
+        // //         return item[property] !== value;
+        // //     });
+        // // }
+
+        // function reject(a, p, v) {
+        //     return a.filter(item => item[p] !== v);
+        // }
+
+        // console.log(reject(users, "admin", true));
+
+        // // exo : créer une fonction qui filtre l'array par rapport à la propriété passée
+        // const produits = [
+        //     { nom : "Courgette", type : "légume" },
+        //     { nom : "Pomme", type : "fruit" },
+        //     { nom : "Salade", type : "légume" },
+        //     { nom : "Poireau", type : "légume" },
+        //     { nom : "Poire", type : "fruit" },
+        //     { nom : "Fraise", type : "fruit" },
+        //     { nom : "Choux-fleur", type : "légume" }
+        // ];
+
+        // // solution avec .filter() :
+        // function filtrer(array, property, value) {
+        //     return array.filter(function(item) {
+        //         return item[property] == value;
+        //     });
+        // }
+        // console.log(filtrer(produits, 'type', 'fruit'));
+
+        // //exo : filtrer les nombres pairs :
+        // function getEvenNumbers(numbersArray){
+        //     return numbersArray.filter(function(num){return !(num % 2) })  // 0 is falsy
+        // }
+        // getEvenNumbers([2,4,3,1,2,6,5])
+
+
+
+
+
+
+function multiplyAndFilter(array, multiplier){
+  // your code
+  
+  return array.filter(function(el) {
+    // if (!isNaN(el) && el) {
+    //     console.log(el)
+    // }
+     return typeof(el) == "number";
+  }).map(function(el) {
+      return el*multiplier
+  })
+  
+  
+}
+
+
+const nums = ["fdfdf", null, 3, 4, 10]
+console.log(multiplyAndFilter(nums, 3))
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    
+        // nouvelles methodes
+        'hello'.startsWith('hell');
+        'hello'.endsWith('ello');
+        'hello'.includes('ell');
+        'hello'.repeat(3);
+
+
+        const course = 'RFB2';
+        const flightNumber = '20-AC2018-jz';
+        const accountNumber = '825242631RT0001';
+
+        const make = 'BMW';
+        const model = 'x5';
+        const colour = 'Royal Blue';
+
+        // .startsWith()
+        course.startsWith('RFB'); // renvoit true;
+        course.startsWith('rfb'); // renvoit false (pas moyen de le rendre insensitive)
+
+        flightNumber.startsWith('AC', 3) // commence par AC après les 3 premiers caractères : true
+
+        // .endsWith()
+
+        // .includes()
+
+        // .repeat()
+
+        function leftPad(str, length = 20) {
+        return `→ ${' '.repeat(length - str.length)}${str}`;
+        }
+
+        console.log(leftPad(make));
+        console.log(leftPad(model));
+        console.log(leftPad(colour));
+    
+    </script>
+    
+</body>
+</html>

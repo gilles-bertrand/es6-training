@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exo recap</title>
+</head>
+<body>
+
+    <h1>Exercice récapitulatif</h1>
+    <section >
+        <ul id="posts_list"></ul>
+    </section>
+    <section id="post_details"></section>
+    
+    <script>
+        const posts = [
+            { id:1, title :'Titre 1', content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto, quos, harum odit voluptatum omnis deleniti nisi sapiente doloremque quas voluptatem! Eaque reprehenderit rerum ea, asperiores nesciunt quos magni voluptate.'},
+
+            { id:2, title :'Titre 2', content:'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum accusamus itaque est velit vel, qui aliquid sit corporis odio facere at porro architecto perferendis commodi dolores fugiat officia. Ea, laboriosam!'},
+
+            { id:3, title :'Titre 3', content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus placeat labore nam saepe tenetur enim rem, nesciunt accusamus, quisquam exercitationem vitae nulla obcaecati quibusdam quaerat deleniti, consectetur quod odit doloribus.'},
+
+            { id:4, title :'Titre 4', content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur earum est doloribus consequuntur odio nam at perferendis rerum, quas delectus culpa molestiae id quo, voluptas recusandae reprehenderit, facilis nulla beatae.'},
+
+            { id:5, title :'Titre 5', content:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos incidunt sunt voluptate repudiandae illo, non blanditiis dolor veritatis quaerat laudantium molestiae corrupti asperiores numquam esse quo doloremque explicabo molestias rem?'},
+        ];
+
+        function createDetails(post_id){
+            let details = document.querySelector("#post_details");
+            details.innerHTML = "";
+            let post = posts.find(function(post){
+                return post.id === post_id;
+            });
+            let content = document.createElement("p");
+            content.innerHTML ="<strong>"+post.title+"</strong><br />"+post.content;
+            details.appendChild(content);
+        }
+
+        function init(){
+            posts.map(function(post){
+                let li = document.createElement('li');
+                let a = document.createElement('a');
+                let content = document.createTextNode(post.title);
+                a.appendChild(content);
+                a.href = "#"+post.id;
+                a.addEventListener('click', function(event){
+                    // createDetails(parseInt(this.href.split("#")[1]))
+                    createDetails(post.id);
+                });
+                li.appendChild(a);
+                let list = document.querySelector("#posts_list");
+                list.appendChild(li);
+            });
+        }
+
+        init();
+    </script>
+    
+</body>
+</html>

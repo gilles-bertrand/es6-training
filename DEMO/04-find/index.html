@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>.find()</title>
+</head>
+<body>
+
+    <script>
+        var users = [
+            {name : 'Anissa'},
+            {name : 'Estelle'},
+            {name : 'Sarah'}
+        ]
+        var user;
+        for (let i = 0 ;i < users.length; i++){
+            if(users[i].name === 'Estelle'){
+                user = users[i];
+                break;
+            } 
+        }
+        console.log(user);
+
+        // Avec find :
+        // Attention, find ne trouve que le premier élément !
+        console.log(users.find(function(user) {
+            return user.name == "Estelle";
+        }));
+        // console.log(users.findIndex(function(user) {
+        //     return user.name == "Estelle";
+        // }));
+
+    </script>
+    
+</body>
+</html>

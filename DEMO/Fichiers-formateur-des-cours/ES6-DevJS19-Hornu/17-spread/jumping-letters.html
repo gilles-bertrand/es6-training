@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EXO Jumping Letters</title>
+    <style>
+        body {
+            min-height: 100vh;
+            font-family: sans-serif;
+            background: #ffc600;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .jump span {
+            display: inline-block;
+            transition: transform 0.2s;
+            cursor: url('http://csscursor.info/source/santahand.png'), default;
+        }
+
+        .jump span:hover {
+            transform: translateY(-20px) rotate(10deg) scale(2);
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="jump">SPREADS!</h2>
+
+    <script>
+         // je récupère le texte et je le découpe en lettres dans un array
+        // const lettres = Array.from(document.querySelector('h2').innerHTML);
+        // const lettres = document.querySelector('h2').innerHTML.split('');
+        const lettres = [...document.querySelector('h2').innerHTML];
+        console.log(lettres);
+
+        // je boucle dans mes lettres, je les modifie en les entourant d'un span
+        const nouvellePhrase = lettres.map(lettre => `<span>${lettre}</span>`).join('');
+        // const nouvellePhrase = lettres.reduce((phrase,lettre) => phrase+`<span>${lettre}</span>`, '');
+        console.log(nouvellePhrase);
+
+        // je remets la version modifiée dans le h2
+        document.querySelector('h2').innerHTML = nouvellePhrase;
+
+
+        // la même en une seule ligne :
+        document.querySelector('h2').innerHTML = [...document.querySelector('h2').innerHTML].map(lettre => `<span>${lettre}</span>`).join('')
+
+
+    </script>
+
+</body>
+</html>

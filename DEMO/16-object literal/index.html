@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object literal</title>
+</head>
+<body>
+    <script>
+    
+    const first = 'snickers';
+    const last = 'bos';
+    const age = 2;
+    const breed = 'King Charles Cav';
+
+    // si je veux construire un objet à partir de variables :
+    const dog = {
+        first: first,
+        last: last,
+        age: age,
+        breed: breed
+    }
+
+    // je n'ai plus besoin de répéter la même chose
+    const dog = {
+        first,
+        last,
+        age,
+        breed
+    }
+
+
+    // objet qui contient des fonctions :
+    const modal = {
+        create: function() {
+
+        },
+        open: function() {
+
+        },
+        close: function() {
+
+        }
+    }
+
+    // Je ne suis plus obligée d'écrire le mot clé function :
+    const modal = {
+        create() {
+
+        },
+        open() {
+
+        },
+        close() {
+
+        }
+    }
+
+
+
+    // j'ai deux const
+    const key = 'pocketColor';
+    const value = '#ffc600';
+
+    // Je crée un objet :
+    const tshirt = {
+        [key] : value    // poketColor : #ffc600
+    }
+
+
+    // // ne pas la faire "en live", juste la prendre et dire que c'est une fonction qui inverse l'hexadécimal
+    function invertColor(color) { 
+        return '#' + ("000000" + (0xFFFFFF ^ parseInt(color.substring(1), 16)).toString(16)).slice(-6)
+    }
+
+    const key = 'inkColor';
+    const value = '#ffc600';
+
+    const tshirt = {
+        [key]: value, // avant on ne pouvait pas créer ça comme ça dans un objet, on devait d'abord créeer le tshirt = {}, puis ajouter tshirt[key] = ''
+        [`${key}Opposite`]: invertColor(value)
+    }
+
+    //autre exemple :
+    const keys = ['size', 'color', 'weight']
+    const values = ['medium', 'red', 100]
+
+    // avec ce qu'on vient de voir on aurait fait :
+    const shirt = {
+        [key[0]] : value[0] //  ... etc
+    }
+
+    // Mais il suffit de faire :
+    const shirt = {
+        [keys.shift()]: values.shift(), // et ça prend automatiquement les valeurs qu'il faut !
+        [keys.shift()]: values.shift(),
+        [keys.shift()]: values.shift()
+    }
+
+
+    </script>
+</body>
+</html>
