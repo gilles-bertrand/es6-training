@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="display-4 text-center">
+            <i class="fas fa-book-open text-primary"></i>
+            Ma <span class="text-primary">Biblio</span>thèque
+        </h1>
+
+        <form id="book-form">
+            <div class="form-group">
+              <label for="title">Titre</label>
+              <input type="text" id="title" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="author">Auteur</label>
+              <input type="text" id="author" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="isbn">ISBN</label>
+              <input type="text" id="isbn" class="form-control" placeholder="">
+            </div>
+            <input type="submit" value="Add Book" class="btn btn-primary btn-block">
+        </form>
+
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>ISBN</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="https://kit.fontawesome.com/ee90761ef2.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
