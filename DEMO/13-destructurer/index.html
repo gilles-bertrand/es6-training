@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        
+
         const person = {
             first: 'Wes',
             last: 'Bos',
@@ -54,7 +54,7 @@
         const settings = {
             speed: 150
         }
-        // const { speed, width } = settings; 
+        // const { speed, width } = settings;
         // console.log(width); // undefined
 
         // Je donne une valeur par défaut !
@@ -65,7 +65,7 @@
         // en déstructurant, la valeur par défaut ne fonctionne que si c'est "undefined". Si c'est null, false ou 0, ça reste une valeur.
 
         // const mySpeed = 0;
-        // const speed = mySpeed || 760; 
+        // const speed = mySpeed || 760;
         // console.log(speed); // 760!
         // Why? Because ES6 destructuring default values only kick in if the value is undefined. null, false and 0 are all still values!
 
@@ -115,7 +115,7 @@
         let inRing = "Hulk Hogan";
         let onSide = "The Rock";
 
-        //Ce qu'on fait en temps normal = 
+        //Ce qu'on fait en temps normal =
         var temp = inRing;
         inRing = onSide;
         onSide = temp;
@@ -147,7 +147,7 @@
 
 
 
-        // Déstructurer les arguments d'un fonction : 
+        // Déstructurer les arguments d'un fonction :
         function tipCalc({total, tip = 0.15, tax = 0.13}) {
             return total + (tip * total) + (tax * total);
         }
@@ -158,6 +158,47 @@
         // const bill = tipCalc() // si je ne passe aucun objet => ne peut pas déstructurer dans les paramètres de la fonction et donc il faudra écrire :
         // function tipCalc({total, tip = 0.15, tax = 0.13} = {}) // pour donner un objet par défaut à déstructurer
         console.log(bill)
+
+
+
+        //// exercices :
+        const user = {
+            firstname : "Anissa",
+            lastname : "Belkheir",
+            address : {
+                street : "rue du chamberlan",
+                city : "Mons"
+            },
+            social : {
+                website : "anissabelkheir.be",
+                instagram : "anissabelkheir"
+            },
+            hobbies : ["photo", "impro", "jardinage", "couture"],
+            parcours : ["EII", "Bervoets", "FUNDP", "Technocite"]
+        }
+
+        // #1 firstname et lastname
+        const { firstname, lastname } = user;
+        console.log(firstname, lastname)
+        // #2 website instagram
+        const { website, instagram } = user.social;
+        console.log(website, instagram)
+        // #3 firstname city country
+        const { firstname : fn, address : { city }, address : { country = "Belgique" } } = user;
+        console.log(fn, city, country)
+        // #4 parcours -> secondaire, superieur, unif, formation
+        let [secondaire, superieur, unif, formation] = user.parcours;
+        console.log(secondaire, superieur, unif, formation);
+
+        [superieur, secondaire, unif, formation] = [secondaire, superieur, unif, formation];
+        console.log(secondaire, superieur, unif, formation)
+
+        // Avec une fonction :
+        function listingHobbies(prenom, nom, hobbies) {
+            //"Bonjour prenom nom ! Voici ta liste de hobbies : hobbie1, hobbie2, hobbie3, ..."
+        }
+
+        listingHobbies(user)
 
     </script>
 </body>

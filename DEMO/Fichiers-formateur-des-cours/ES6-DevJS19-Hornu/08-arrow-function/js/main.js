@@ -35,9 +35,9 @@
 // console.log(vieux);
 
 
-// // exo :
-// const course = "100m haies";
-// const gagnants = ["Henri", "Alfred", "José"];
+// exo :
+const course = "100m haies";
+const gagnants = ["Henri", "Alfred", "José"];
 
 // // output attendu :
 // // [
@@ -72,7 +72,7 @@ button.addEventListener('click', function() {
 
 // const person = {
 //     points : 23,
-//     score : () => { 
+//     score : () => {
 //         console.log(this); // this correspond au parent de l'objet, donc window
 //         this.points++;
 //     }

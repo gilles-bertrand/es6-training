@@ -4,7 +4,7 @@
 // }
 // Dog.prototype.aboyer = function() {
 //     console.log(`Wouf Wouf ! Je m'appelle ${this.nom} !`);
-// } 
+// }
 
 // const rex = new Dog('Rex', 'Berger Allemand');
 // const ulrok = new Dog('Ulrok', 'Leonberg');
@@ -23,6 +23,7 @@
 
 // Dog.prototype.caliner = function() {
 //     console.log('Slurp !');
+
 // }
 
 // rex.caliner();

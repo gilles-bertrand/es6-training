@@ -27,7 +27,7 @@ class Clock {
             .replace("h", hours)
             .replace("m", mins)
             .replace("s", secs);
-        
+
         console.log(output);
         return output;
     }
@@ -55,3 +55,21 @@ clock.start();
 setTimeout(() => {
     clock.stop()
 }, 20000) // arrêter l'horloge au bout de 20sec
+
+
+
+
+
+
+
+// Extend de class
+// Créer une class Animal qui prend le groupe (mammifere, reptile,...), le type (chat, dinosaure,...) et le nom
+// Les Animal mangent, boivent, respirent et meurent
+// Créer une ou plusieurs class enfant qui étendent animal et qui prennent qqs arguments
+//  (pas tous obligatoires) du genre nom, race, continent, âge,... Soyez inventifs ^^
+//  Chacune de ces classes a des spécificité, class Serpent aura une métohode "ramper()", la class Chat aura un "miauler()"... etc.
+
+// Autre proposition :
+// Une class Véhicule qui prend un nombre de roues et une vitessemax
+// tous les Véhicules avancent à une certaine vitesse max
+// une class Voiture qui prend un nombre de roues, moteur, vitessemax...

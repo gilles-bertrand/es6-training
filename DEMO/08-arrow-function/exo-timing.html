@@ -56,11 +56,13 @@
 
 
   // possibilité de les enchaîner :
-  const list = Array.from(document.querySelectorAll('li')) // voir chapitre 09 sur les .from()
-    .filter(item => item.textContent.includes('Flexbox'))
-    .map(item => item.dataset.time)
-    .map(item => parseInt(item.split(':')[0])*60 + parseInt(item.split(':')[1]))
-    .reduce((totalSec, sec) => sec + totalSec, 0);
+  // const list = Array.from(document.querySelectorAll('li')) // voir chapitre 09 sur les .from()
+  //   .filter(item => item.textContent.includes('Flexbox'))
+  //   .map(item => item.dataset.time)
+  //   .map(item => parseInt(item.split(':')[0])*60 + parseInt(item.split(':')[1]))
+  //   .reduce((totalSec, sec) => sec + totalSec, 0);
+
+    const list = Array.from(document.querySelectorAll('li')).reduce((r, t) => t.textContent.includes('Flexbox') ? +(t.dataset.time.split(':')[0])*60 + +(t.dataset.time.split(':')[1]) + r : r, 0)
 
     console.log(list)
 

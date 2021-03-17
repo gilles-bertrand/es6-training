@@ -19,7 +19,7 @@
             if(users[i].name === 'Estelle'){
                 user = users[i];
                 break;
-            } 
+            }
         }
         console.log(user);
 
@@ -32,7 +32,45 @@
         //     return user.name == "Estelle";
         // }));
 
+
+
+
+
+// Exercice :
+const books = [
+    { id: 1, title : "L'HTML sur le bout des doigts", author : 2},
+    { id: 2, title : "Jongler avec le CSS", author : 2},
+    { id: 3, title : "Comment je DEV en dormant", author : 1},
+    { id: 4, title : "Le JS pour les nuls", author : 3}
+];
+
+const authors = [
+    { id: 1, name: "Geoffrey Denys"},
+    { id: 2, name: "Guillaume Danzin"},
+    { id: 3, name: "Anissa Belkheir"}
+];
+
+function findAuthor(bookId) {
+
+    let myBook = books.find(function(book) { // je récupère le livre demandé par bookId
+        return book.id == bookId;
+    });
+
+    let myAuthor = authors.find(function(author) { // je récupère l'auteur du livre trouvé plus haut
+        return author.id == myBook.author;
+    });
+
+    myBook.author = myAuthor; // je remplace author id dans book par les infos complètes sur mon auteur
+
+    return myBook; // je retourne le livre avec les infos modifiées
+
+}
+
+console.log(findAuthor(3));
+
+// { id: 3, title : "Comment je DEV en dormant", author : { id: 1, name: "Geoffrey Denys" }}
+
     </script>
-    
+
 </body>
 </html>
